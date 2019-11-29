@@ -1,10 +1,62 @@
-import React, { Component } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
+import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 
 export const Footer = () => (
-	<footer className="footer mt-auto py-3 text-center">
-		<p>
-			Made with <i className="fa fa-heart text-danger" /> by{" "}
-			<a href="http://www.4geeksacademy.com">4Geeks Academy</a>
-		</p>
-	</footer>
+	<MDBFooter color="blue" className="font-small pt-4 mt-4">
+		<MDBContainer fluid className="text-center text-md-left">
+			<MDBRow>
+				<MDBCol md="4">
+					<ul className="list-unstyled">
+						<li>
+							<Link to="/">Tu Perfil</Link>
+						</li>
+						<li>
+							<Link to="/">Equipos</Link>
+						</li>
+						<li>
+							<Link to="/">Noticias</Link>
+						</li>
+						<li>
+							<Link to="/">Postulaciones</Link>
+						</li>
+					</ul>
+				</MDBCol>
+
+				<MDBCol md="4">
+					<h5 className="text-uppercase">Visítanos en nuestras Redes Sociales</h5>
+					<br />
+					<Link to="/">
+						<i className="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+					</Link>
+					<a className="tw-ic">
+						<i className="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+					</a>
+					<a className="ins-ic">
+						<i className="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+					</a>
+				</MDBCol>
+				<MDBCol md="4">
+					<ul className="list-unstyled">
+						<li>
+							<a href="/">Quienes Somos</a>
+						</li>
+						<li>
+							<a href="/">FAQ</a>
+						</li>
+						<li>
+							<a href="/">Contactenos</a>
+						</li>
+					</ul>
+				</MDBCol>
+			</MDBRow>
+		</MDBContainer>
+		<div className="footer-copyright text-center py-3">
+			<MDBContainer fluid>
+				&copy; {new Date().getFullYear()} Copyright: <a href="https://www.MDBootstrap.com"> MDBootstrap.com </a>
+			</MDBContainer>
+		</div>
+	</MDBFooter>
 );
+
+export default Footer;
