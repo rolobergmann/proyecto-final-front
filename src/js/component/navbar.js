@@ -33,10 +33,13 @@ export class Navbar extends Component {
 						<Nav.Link href="/">Home</Nav.Link>
 					</Nav.Item>
 					<Nav.Item as="li">
-						<Nav.Link href="link-1">Teams</Nav.Link>
+						<Nav.Link href="/teams_home">Teams</Nav.Link>
 					</Nav.Item>
 					<Nav.Item as="li">
-						<Nav.Link href="link-2">Profile</Nav.Link>
+						<Nav.Link href="/team_create">Crea tu Equipo!</Nav.Link>
+					</Nav.Item>
+					<Nav.Item as="li">
+						<Nav.Link href="/#">Profile</Nav.Link>
 					</Nav.Item>
 					<Nav.Item as="li">
 						<Nav.Link href="/admin">{this.props.test}</Nav.Link>

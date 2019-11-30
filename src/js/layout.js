@@ -5,6 +5,7 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./views/home";
 import { Demo } from "./views/demo";
 import { TeamsHome } from "./views/teams_home";
+import { TeamCreate } from "./views/team_create";
 import { Single } from "./views/single";
 import injectContext from "./store/appContext";
 
@@ -30,7 +31,8 @@ export const Layout = () => {
 					<Switch>
 						<Route exact path="/" component={Home} />
 						<Route path="/demo" component={Demo} />
-						<Route path="/teams" component={TeamsHome} />
+						<Route path="/teams_home" component={TeamsHome} />
+						<Route path="/team_create" component={TeamCreate} />
 						<Route path="/single/:theid" component={Single} />
 						<Route path="/admin" component={Admin} />
 						<Route render={() => <h1>Not found!</h1>} />
