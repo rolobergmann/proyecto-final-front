@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
+import Avatar from "../../img/logo.png";
 
 export class Login extends React.Component {
 	constructor(props) {
@@ -28,14 +29,14 @@ export class Login extends React.Component {
 				<Nav.Link eventKey="link-1" onClick={() => this.handleShow()}>
 					Registro
 				</Nav.Link>
-				<Modal show={this.state.show} onHide={this.handleClose} animation={true}>
+				<Modal show={this.state.show} onHide={this.handleClose} animation={true} className="modal-body">
 					<Modal.Body>
 						<div id="myModal" className="modal-fade">
-							<div className="modal-dialog modal-login">
+							<div className="modal-dialog modal-login-new">
 								<div className="modal-content">
-									<div className="modal-header">
+									<div className="modal-header-new">
 										<div className="avatar">
-											<img src="/src/img/avatar.png" alt="Avatar" />
+											<img src={Avatar} alt="Avatar" />
 											<h4 className="modal-title">Member Login</h4>
 											<button
 												type="button"
@@ -50,7 +51,7 @@ export class Login extends React.Component {
 												<div className="form-group">
 													<input
 														type="text"
-														className="form-control"
+														className="form-control-new"
 														name="username"
 														placeholder="Username"
 														required="required"
@@ -59,7 +60,7 @@ export class Login extends React.Component {
 												<div className="form-group">
 													<input
 														type="password"
-														className="form-control"
+														className="form-control-new"
 														name="password"
 														placeholder="Password"
 														required="required"
@@ -68,13 +69,13 @@ export class Login extends React.Component {
 												<div className="form-group">
 													<button
 														type="submit"
-														className="btn btn-primary btn-lg btn-block login-btn">
+														className="btn-new btn-new-primary btn-new-lg btn-new-block login-btn-new">
 														Login
 													</button>
 												</div>
 											</form>
 										</div>
-										<div className="modal-footer">
+										<div className="modal-footer-new">
 											<a href="#">Forgot Password?</a>
 										</div>
 									</div>

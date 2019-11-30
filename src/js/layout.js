@@ -10,6 +10,7 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { Admin } from "./component/admin";
 
 const layoutStyle = {
 	paddingTop: 75
@@ -23,14 +24,16 @@ export const Layout = () => {
 
 	return (
 		<div className="d-flex flex-column h-100" style={layoutStyle}>
+
 			<BrowserRouter>
 				<ScrollToTop>
-					<Navbar test="holi" test2="Admin" />
+					<Navbar test="Admin" />
 					<Switch>
 						<Route exact path="/" component={Home} />
 						<Route path="/demo" component={Demo} />
 						<Route path="/teams" component={TeamsHome} />
 						<Route path="/single/:theid" component={Single} />
+						<Route path="/admin" component={Admin} />
 						<Route render={() => <h1>Not found!</h1>} />
 					</Switch>
 					<Footer />
