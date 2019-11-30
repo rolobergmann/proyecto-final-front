@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Nav, Container, Row } from "react-bootstrap";
 import PropTypes from "prop-types";
+import rigoImage from "../../img/rigo-baby.jpg";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
@@ -28,7 +29,7 @@ export class Navbar extends Component {
 					as="ul"
 					variant="primary">
 					<Nav.Item className="navbar-brand">
-						<img src="./src/img/logo_lion.jpg" />
+						<img src="#" />
 					</Nav.Item>
 					<Nav.Item as="li">
 						<Nav.Link href="/home">Active</Nav.Link>
