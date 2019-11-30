@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 
@@ -39,13 +39,13 @@ export const Footer = () => (
 				<MDBCol md="4">
 					<ul className="list-unstyled">
 						<li>
-							<a href="/">Quienes Somos</a>
+							<a href="#!">Quienes Somos</a>
 						</li>
 						<li>
-							<a href="/">FAQ</a>
+							<a href="#!">FAQ</a>
 						</li>
 						<li>
-							<a href="/">Contactenos</a>
+							<a href="#!">Contactenos</a>
 						</li>
 					</ul>
 				</MDBCol>
@@ -58,5 +58,3 @@ export const Footer = () => (
 		</div>
 	</MDBFooter>
 );
-
-export default Footer;

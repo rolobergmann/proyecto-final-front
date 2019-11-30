@@ -20,7 +20,7 @@ export const Layout = () => {
 		<div className="d-flex flex-column h-100">
 			<BrowserRouter>
 				<ScrollToTop>
-					<Navbar test="holi" />
+					<Navbar test="holi" test2="Admin" />
 					<Switch>
 						<Route exact path="/" component={Home} />
 						<Route path="/demo" component={Demo} />

@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import { Nav, Container } from "react-bootstrap";
+import { Nav, Container, Row } from "react-bootstrap";
+import PropTypes from "prop-types";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
-import PropTypes from "prop-types";
+import { Login } from "./login";
 
 export class Navbar extends Component {
 	constructor(props) {
@@ -26,7 +28,7 @@ export class Navbar extends Component {
 					as="ul"
 					variant="primary">
 					<Nav.Item className="navbar-brand">
-						<img src="./src/img/logo_lion.jpg" alt="lala" />
+						<img src="./src/img/logo_lion.jpg" />
 					</Nav.Item>
 					<Nav.Item as="li">
 						<Nav.Link href="/home">Active</Nav.Link>
@@ -40,15 +42,13 @@ export class Navbar extends Component {
 					<Nav.Item as="li">
 						<Nav.Link eventKey="link-3">Link3</Nav.Link>
 					</Nav.Item>
-					<Nav.Item as="li">
-						<Nav.Link eventKey="link-3">{this.props.test}</Nav.Link>
+					<Nav.Item as="li" className="justify-content-end">
+						{" "}
+						<Login />
+						<Nav.Item />
 					</Nav.Item>
 				</Nav>
 			</Container>
 		);
 	}
 }
-
-Navbar.propTypes = {
-	test: PropTypes.string
-};
