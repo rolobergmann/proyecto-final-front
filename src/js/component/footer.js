@@ -15,9 +15,6 @@ export const Footer = () => (
 							<Link to="/">Equipos</Link>
 						</li>
 						<li>
-							<Link to="/">Noticias</Link>
-						</li>
-						<li>
 							<Link to="/">Postulaciones</Link>
 						</li>
 					</ul>
@@ -35,19 +32,6 @@ export const Footer = () => (
 					<a className="ins-ic">
 						<i className="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
 					</a>
-				</MDBCol>
-				<MDBCol md="4">
-					<ul className="list-unstyled">
-						<li>
-							<a href="#!">Quienes Somos</a>
-						</li>
-						<li>
-							<a href="#!">FAQ</a>
-						</li>
-						<li>
-							<a href="#!">Contactenos</a>
-						</li>
-					</ul>
 				</MDBCol>
 			</MDBRow>
 		</MDBContainer>
