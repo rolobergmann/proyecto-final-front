@@ -24,7 +24,6 @@ export const Layout = () => {
 
 	return (
 		<div className="d-flex flex-column h-100" style={layoutStyle}>
-
 			<BrowserRouter>
 				<ScrollToTop>
 					<Navbar test="Admin" />

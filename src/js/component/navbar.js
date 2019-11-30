@@ -24,7 +24,7 @@ export class Navbar extends Component {
 		return (
 			<Container>
 				<Nav
-					className="justify-content-between navbar navbar-light bg-light"
+					className="justify-content-between navbar navbar-light bg-light fixed-top"
 					defaultActiveKey="/home"
 					as="ul"
 					variant="primary">
