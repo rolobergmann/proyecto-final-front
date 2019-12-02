@@ -33,7 +33,7 @@ export const Layout = () => {
 						<Route path="/demo" component={Demo} />
 						<Route path="/teams" component={TeamsHome} />
 						<Route path="/single/:theid" component={Single} />
-						<Route path="/players" component={Players} />
+						<Route path="/player" component={Players} />
 						<Route path="/admin" component={Admin} />
 						<Route render={() => <h1>Not found!</h1>} />
 					</Switch>

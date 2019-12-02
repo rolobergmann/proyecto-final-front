@@ -10,6 +10,18 @@ export class PlayerData extends React.Component {
 				<div className="row no-gutters">
 					<div className="col-md-4">
 						<img src={Avatar} className="card-img" alt="..." />
+						<div className="container">
+							<div className="input-group-prepend">
+								<span className="input-group-text">Avatar</span>
+
+								<div className="custom-file">
+									<input type="file" className="custom-file-input" id="inputGroupFile01" />
+									<label className="custom-file-label" forHtml="inputGroupFile01">
+										Select your file
+									</label>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div className="col-md-8">
 						<div className="card-header">Nick here</div>
