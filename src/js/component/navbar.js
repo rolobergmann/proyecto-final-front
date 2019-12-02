@@ -39,7 +39,7 @@ export class Navbar extends Component {
 						<Nav.Link href="/team_create">Crea tu Equipo!</Nav.Link>
 					</Nav.Item>
 					<Nav.Item as="li">
-						<Nav.Link href="/#">Profile</Nav.Link>
+						<Nav.Link href="/player">Profile</Nav.Link>
 					</Nav.Item>
 					<Nav.Item as="li">
 						<Nav.Link href="/admin">{this.props.test}</Nav.Link>
