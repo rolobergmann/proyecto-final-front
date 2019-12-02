@@ -12,6 +12,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
+			],
+			teams: [
+				{
+					name: "ROCKETS",
+					logo: "https://apprecs.org/ios/images/app-icons/256/06/751632134.jpg",
+					lema: "Venceremos!"
+				},
+				{
+					name: "BULLS",
+					logo: "https://styles.redditmedia.com/t5_kykzt/styles/profileIcon_p3rfq9e5gk611.jpg",
+					lema: "HOLI!"
+				}
 			]
 		},
 		actions: {

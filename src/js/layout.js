@@ -6,7 +6,7 @@ import { Home } from "./views/home";
 import { Demo } from "./views/demo";
 import { TeamsHome } from "./views/teams_home";
 import { TeamCreate } from "./views/team_create";
-import { Single } from "./views/single";
+import { Team } from "./views/team";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -33,7 +33,7 @@ export const Layout = () => {
 						<Route path="/demo" component={Demo} />
 						<Route path="/teams_home" component={TeamsHome} />
 						<Route path="/team_create" component={TeamCreate} />
-						<Route path="/single/:theid" component={Single} />
+						<Route path="/team/:theid" component={Team} />
 						<Route path="/admin" component={Admin} />
 						<Route render={() => <h1>Not found!</h1>} />
 					</Switch>

@@ -1,5 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import Card from "react-bootstrap/Card";
+import { Button } from "react-bootstrap";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 import { Context } from "../store/appContext";
 
@@ -10,30 +14,29 @@ export const Demo = () => {
 
 	return (
 		<div className="container">
-			<ul className="list-group">
-				{store.demo.map((item, index) => {
+			<Row>
+				{store.teams.map((item, index) => {
 					return (
-						<li
-							key={index}
-							className="list-group-item d-flex justify-content-between"
-							style={{ background: item.background }}>
-							<Link to={"/single/" + index}>
-								<span>Link to: {item.title}</span>
-							</Link>
-							{// Conditional render example
-							// Check to see if the background is orange, if so, display the message
-							item.background === "orange" ? (
-								<p style={{ color: item.initial }}>
-									Check store/flux.js scroll to the actions to see the code
-								</p>
-							) : null}
-							<button className="btn btn-success" onClick={() => actions.changeColor(index, "orange")}>
-								Change Color
-							</button>
-						</li>
+						<Col key={index}>
+							<Card style={{ width: "18rem" }}>
+								<Card.Img variant="top" src={item.logo} />
+								<Card.Body>
+									<Card.Title>{item.name}</Card.Title>
+									<Card.Text>
+										Some quick example text to build on the card title and make up the bulk of the
+										card content.
+									</Card.Text>
+									<Link to={"/single/" + index}>
+										<Button variant="primary">
+											<span>Link to: {item.name}</span>
+										</Button>
+									</Link>
+								</Card.Body>
+							</Card>
+						</Col>
 					);
 				})}
-			</ul>
+			</Row>
 			<br />
 			<Link to="/">
 				<button className="btn btn-primary">Back home</button>
