@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink } from "mdbreact";
 import Nav from "react-bootstrap/Nav";
 
-export class PlayerDetails extends Component {
+export class Tabs extends Component {
 	state = {
 		items: {
 			default: "1"
