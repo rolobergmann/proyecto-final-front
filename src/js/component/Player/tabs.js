@@ -116,7 +116,7 @@ export class Tabs extends Component {
 							</MDBTabPane>
 							<MDBTabPane tabId="4">
 								<br />
-								<Row md={5}>
+								<Row md={5} className="justify-content-md-center">
 									{/* Aqui luego agregamos un map para traer la info y renderizar las cartas */}
 									<Postulacion img={Wolves} game="CSGO" logo={CSGOLogo} />
 									<Postulacion img={PEX} game="League of Legends" logo={LOLLogo} />

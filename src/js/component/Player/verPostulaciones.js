@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import styles from "../../../styles/card.scss";
 
 export const Postulacion = props => (
-	<Card style={{ width: "18rem" }}>
+	<Card style={{ width: "17rem" }}>
 		<Card.Img variant="top" src={props.img} className="equipo" />
 		<Card.Body>
 			<Card.Title>
