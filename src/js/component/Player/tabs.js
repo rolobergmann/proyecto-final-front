@@ -12,7 +12,7 @@ import C9 from "../../../img/C9.png";
 import OWLogo from "../../../img/OWLogo.png";
 import CSGOLogo from "../../../img/CSGOLogo.jpg";
 import LOLLogo from "../../../img/LOLLogo.jpg";
-import { crearPostulacion } from "../Team/crearPostulacion";
+import { CrearPostulacion } from "../Team/crearPostulacion";
 
 export class Tabs extends Component {
 	state = {
@@ -127,8 +127,9 @@ export class Tabs extends Component {
 								</Row>
 							</MDBTabPane>
 
-							<MDBTabPane tabId="5" />
-							<crearPostulacion />
+							<MDBTabPane tabId="5">
+								<CrearPostulacion />
+							</MDBTabPane>
 						</MDBTabContent>
 					</MDBCol>
 				</MDBRow>

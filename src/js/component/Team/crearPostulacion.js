@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
 import PropTypes from "prop-types";
 
-export const crearPostulacion = () => (
+export const CrearPostulacion = () => (
 	<Form>
 		<Form.Group controlId="exampleForm.ControlTextarea0">
 			<Form.Label>Nombre de tu Equipo</Form.Label>
