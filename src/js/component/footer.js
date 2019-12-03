@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 
 export const Footer = () => (
-	<MDBFooter color="blue" className="font-small pt-4 mt-4">
-		<MDBContainer fluid className="text-center text-md-left">
+	<MDBFooter color="blue" className="font-small pt-2 mt-2">
+		<MDBContainer fluid className="text-center text-md-justify">
 			<MDBRow>
-				<MDBCol md="4">
+				<MDBCol md="6">
 					<ul className="list-unstyled">
 						<li>
 							<Link to="/">Tu Perfil</Link>
@@ -20,7 +20,7 @@ export const Footer = () => (
 					</ul>
 				</MDBCol>
 
-				<MDBCol md="4">
+				<MDBCol md="6">
 					<h5 className="text-uppercase">Visítanos en nuestras Redes Sociales</h5>
 					<br />
 					<Link to="/">

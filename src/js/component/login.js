@@ -2,7 +2,8 @@ import React from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
-import Avatar from "../../img/logo.png";
+import Avatar from "../../img/avatar.png";
+import styles from "../../styles/login.scss";
 
 export class Login extends React.Component {
 	constructor(props) {
