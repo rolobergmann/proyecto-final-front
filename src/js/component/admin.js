@@ -8,7 +8,7 @@ export class Admin extends Component {
 		return (
 			<div className="container">
 				<div clasdName="row">
-					<h1>Panel de Administracion</h1>
+					<h1>Bienvenidos al Panel de Administracion</h1>
 					<br />
 					<Accordion>
 						<Card>
@@ -212,7 +212,34 @@ export class Admin extends Component {
 								</Accordion.Toggle>
 							</Card.Header>
 							<Accordion.Collapse eventKey="3">
-								<Card.Body>Hello! Im another body</Card.Body>
+								<Card.Body>
+									<Form>
+										<Form.Group controlId="formBasicEmail">
+											<Row>
+												<Col>
+													<Form.Control
+														type="email"
+														placeholder="Buscar Jugador por su nick"
+													/>
+												</Col>
+												<Col>
+													<Button variant="primary" type="submit">
+														Buscar
+													</Button>
+												</Col>
+											</Row>
+										</Form.Group>
+										<Row>
+											<Col />
+											<Col>
+												<Button variant="primary" type="submit">
+													Reset Password
+												</Button>
+											</Col>
+											<Col />
+										</Row>
+									</Form>
+								</Card.Body>
 							</Accordion.Collapse>
 						</Card>
 					</Accordion>
