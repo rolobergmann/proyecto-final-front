@@ -2,6 +2,10 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Avatar from "../../../img/avatarGamer.png";
+import OWLogo from "../../../img/OWLogo.png";
+import CSGOLogo from "../../../img/CSGOLogo.jpg";
+import LOLLogo from "../../../img/LOLLogo.jpg";
+import { Form, Col, Row, Button } from "react-bootstrap";
 
 export class PlayerData extends React.Component {
 	render() {
@@ -24,7 +28,11 @@ export class PlayerData extends React.Component {
 						</div>
 					</div>
 					<div className="col-md-8">
-						<div className="card-header">Nick here</div>
+						<div className="card-header">Nick here </div>
+						<button className="btn">
+							<i className="fa fa-folder" />
+							Editar
+						</button>
 						<div className="card-body">
 							<p className="card-text">
 								<div className="input-group col-md-8">
@@ -64,13 +72,13 @@ export class PlayerData extends React.Component {
 										<span className="input-group-text" id="inputGroup-sizing-default">
 											Sexo
 										</span>
-									</div>
-									<div className="input-group col-md-6">
-										<select className="custom-select" id="inputGroupSelect01">
-											<option selected>Seleccione...</option>
-											<option value="1">Masculino</option>
-											<option value="2">Femenino</option>
-										</select>
+										<span>
+											<select className="custom-select" id="inputGroupSelect01">
+												<option selected>Seleccione...</option>
+												<option value="1">Masculino</option>
+												<option value="2">Femenino</option>
+											</select>
+										</span>
 									</div>
 								</div>
 							</p>
@@ -106,6 +114,24 @@ export class PlayerData extends React.Component {
 								</div>
 							</p>
 
+							<Form.Group column sm={12} controlId="formHorizontalCheck">
+								<Form.Label as="legend">Selecciona tus Juegos</Form.Label>
+								<Row>
+									<Col sm={4}>
+										<img src={OWLogo} />
+										<Form.Check label="Overwatch" />
+									</Col>
+									<Col sm={4}>
+										<img src={CSGOLogo} />
+										<Form.Check label="Counter Strike Global Offensive" />
+									</Col>
+									<Col sm={4}>
+										<img src={LOLLogo} />
+										<Form.Check label="League of Legends" />
+									</Col>
+								</Row>
+							</Form.Group>
+							{/* 
 							<p className="card-text">
 								<div className="input-group col-md-12">
 									<div className="input-group-prepend">
@@ -128,7 +154,7 @@ export class PlayerData extends React.Component {
 										</select>
 									</div>
 								</div>
-							</p>
+							</p> */}
 						</div>
 					</div>
 				</div>
