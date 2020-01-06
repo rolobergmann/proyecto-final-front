@@ -2,12 +2,10 @@ import React from "react";
 
 var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
-myHeaders.append("TRN-Api-Key", "0b14edca-732d-4a1b-a748-5a7729d7e88f");
 
 var requestOptions = {
 	method: "GET",
 	headers: myHeaders,
-	mode: "no-cors",
 	redirect: "follow"
 };
 
@@ -17,17 +15,36 @@ export class ApiFetch extends React.Component {
 		this.state = {
 			error: null,
 			isLoaded: false,
-			items: []
+			playerinfo: {}
 		};
 	}
 
 	componentDidMount() {
-		fetch("https://public-api.tracker.gg/v2/overwatch/standard/profile/battlenet/AirMann%231713", requestOptions)
-			.then(response => response.text())
-			.then(result => console.log(result))
-			.catch(error => console.log("error", error));
+		fetch("https://ow-api.com/v1/stats/pc/global/AirMann-1713/profile", requestOptions)
+			.then(resp => {
+				console.log(resp.ok); // will be true if the response is successfull
+				console.log(resp.status); // the status code = 200 or code = 400 etc.
+				// console.log(resp.text()); // will try return the exact result as string
+				return resp.json(); // (returns promise) will try to parse the result as json as return a promise that you can .then for results
+			})
+			.then(data => {
+				this.setState({
+					playerinfo: {
+						name: data.name
+					}
+				});
+				//here is were your code should start after the fetch finishes
+				console.log(data); //this will print on the console the exact object received from the server
+			})
+			.catch(error => {
+				//error handling
+				console.log(error);
+			});
+		// .then(response => response.text())
+		// .then(result => console.log(result))
+		// .catch(error => console.log("error", error));
 	}
 	render() {
-		return <ul>exito</ul>;
+		return <div>{this.state.playerinfo.name}</div>;
 	}
 }
