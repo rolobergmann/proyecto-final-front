@@ -13,6 +13,7 @@ import OWLogo from "../../../img/OWLogo.png";
 import CSGOLogo from "../../../img/CSGOLogo.jpg";
 import LOLLogo from "../../../img/LOLLogo.jpg";
 import { CrearPostulacion } from "../Team/crearPostulacion";
+import { ApiFetch } from "../Player/playerStats";
 
 export class Tabs extends Component {
 	state = {
@@ -81,14 +82,9 @@ export class Tabs extends Component {
 						</Nav>
 						<MDBTabContent activeItem={this.state.items["default"]}>
 							<MDBTabPane tabId="1">
-								<p>
-									Consequat occaecat ullamco amet non eiusmod nostrud dolore irure incididunt est duis
-									anim sunt officia. Fugiat velit proident aliquip nisi incididunt nostrud
-									exercitation proident est nisi. Irure magna elit commodo anim ex veniam culpa
-									eiusmod id nostrud sit cupidatat in veniam ad. Eiusmod consequat eu adipisicing
-									minim anim aliquip cupidatat culpa excepteur quis. Occaecat sit eu exercitation
-									irure Lorem incididunt nostrud.
-								</p>
+								<div>
+									<ApiFetch />
+								</div>
 							</MDBTabPane>
 							<MDBTabPane tabId="2">
 								<p>
