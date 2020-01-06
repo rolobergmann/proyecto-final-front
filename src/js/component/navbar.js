@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { Login } from "./login";
-import Logo from "../../img/logo.png";
+import Logo from "../../img/logo23.png";
 
 export class Navbar extends Component {
 	constructor(props) {
