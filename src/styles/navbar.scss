@@ -1,0 +1,14 @@
+.nav{
+    background: #152F4F;
+    color:white;
+}
+    
+.links{
+  li a{ color: white;
+  transition: color .2s;
+  &:hover{
+  text-decoration:none;
+  color:#4180CB;
+    }
+  }
+}  

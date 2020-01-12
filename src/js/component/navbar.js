@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Nav, Container, Row } from "react-bootstrap";
 import PropTypes from "prop-types";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
+import "../../styles/navbar.scss";
 import { Login } from "./login";
-import Logo from "../../img/logo23.png";
+import Logo from "../../img/logonar.png";
 
 export class Navbar extends Component {
 	constructor(props) {
@@ -22,13 +22,9 @@ export class Navbar extends Component {
 
 	render() {
 		return (
-			<Container>
-				<Nav
-					className="justify-content-between navbar navbar-light bg-light fixed-top"
-					defaultActiveKey="/home"
-					as="ul"
-					variant="primary">
-					<Nav.Item className="navbar-brand">{<img src={Logo} />}</Nav.Item>
+			<div className="links">
+				<Nav className="justify-content-between navbar fixed-top" defaultActiveKey="/home" as="ul">
+					<Nav.Item className="navbar-brand">{<img src={Logo} height="70" width="110" />}</Nav.Item>
 					<Nav.Item as="li">
 						<Nav.Link href="/">Home</Nav.Link>
 					</Nav.Item>
@@ -50,7 +46,8 @@ export class Navbar extends Component {
 						<Nav.Item />
 					</Nav.Item>
 				</Nav>
-			</Container>
+				<div className="links" />
+			</div>
 		);
 	}
 }

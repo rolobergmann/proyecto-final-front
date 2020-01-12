@@ -1,44 +1,72 @@
 import React, { Component } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.css";
 import { Link } from "react-router-dom";
 import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
+import "../../styles/footer.scss";
 
 export const Footer = () => (
-	<MDBFooter color="blue" className="font-small pt-2 mt-2">
-		<MDBContainer fluid className="text-center text-md-justify">
-			<MDBRow>
-				<MDBCol md="6">
-					<ul className="list-unstyled">
+	<div className="mt-5 pt-5 pb-5 footer">
+		<div className="container">
+			<div className="row">
+				<div className="col-lg-5 col-xs-12 about-company">
+					<h2>Heading</h2>
+					<p classNames="pr-5 text-white-50">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac ante mollis quam tristique
+						convallis{" "}
+					</p>
+					<p>
+						<a href="#">
+							<i className="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+						</a>
+						<a href="#">
+							<i className="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+						</a>
+						<a href="#">
+							<i className="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+						</a>
+					</p>
+				</div>
+				<div className="col-lg-3 col-xs-12 links">
+					<h4 className="mt-lg-0 mt-sm-3">Links</h4>
+					<ul className="m-0 p-0">
 						<li>
-							<Link to="/">Tu Perfil</Link>
+							- <Link to="/">Home</Link>
 						</li>
 						<li>
-							<Link to="/">Equipos</Link>
+							- <Link to="/player">Tu Perfil</Link>
 						</li>
 						<li>
-							<Link to="/">Postulaciones</Link>
+							- <Link to="/teams_home">Equipos</Link>
+						</li>
+						<li>
+							- <Link to="/team_create">Crea tu euipo</Link>
+						</li>
+						<li>
+							- <Link to="/admin">Admin</Link>
 						</li>
 					</ul>
-				</MDBCol>
-
-				<MDBCol md="6">
-					<h5 className="text-uppercase">Visítanos en nuestras Redes Sociales!</h5>
-					<br />
-					<Link to="/">
-						<i className="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-					</Link>
-					<a className="tw-ic">
-						<i className="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-					</a>
-					<a className="ins-ic">
-						<i className="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-					</a>
-				</MDBCol>
-			</MDBRow>
-		</MDBContainer>
-		<div className="footer-copyright text-center py-3">
-			<MDBContainer fluid>
-				&copy; {new Date().getFullYear()} Copyright: <a href="https://www.MDBootstrap.com"> MDBootstrap.com </a>
-			</MDBContainer>
+				</div>
+				<div className="col-lg-4 col-xs-12 location">
+					<h4 className="mt-lg-0 mt-sm-4">Location</h4>
+					<p>22, Lorem ipsum dolor, consectetur adipiscing</p>
+					<p className="mb-0">
+						<i className="fa fa-phone mr-3" />
+						(541) 754-3010
+					</p>
+					<p>
+						<i className="fa fa-envelope-o mr-3" />
+						info@hsdf.com
+					</p>
+				</div>
+			</div>
+			<div cclassName="row mt-5">
+				<div className="col copyright">
+					<p className="">
+						<small className="text-white-50">© 2019. All Rights Reserved.</small>
+					</p>
+				</div>
+			</div>
 		</div>
-	</MDBFooter>
+	</div>
 );
