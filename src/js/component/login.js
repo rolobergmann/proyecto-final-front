@@ -3,7 +3,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Nav } from "react-b
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Avatar from "../../img/avatar.png";
-import styles from "../../styles/login.scss";
+import "../../styles/login.scss";
 
 export class Login extends React.Component {
 	constructor(props) {

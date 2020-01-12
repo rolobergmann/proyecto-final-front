@@ -11,7 +11,7 @@ export const Footer = () => (
 			<div className="row">
 				<div className="col-lg-5 col-xs-12 about-company">
 					<h2>Heading</h2>
-					<p classNames="pr-5 text-white-50">
+					<p className="pr-5 text-white-50">
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac ante mollis quam tristique
 						convallis{" "}
 					</p>
@@ -60,7 +60,7 @@ export const Footer = () => (
 					</p>
 				</div>
 			</div>
-			<div cclassName="row mt-5">
+			<div className="row mt-5">
 				<div className="col copyright">
 					<p className="">
 						<small className="text-white-50">© 2019. All Rights Reserved.</small>

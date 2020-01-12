@@ -22,7 +22,7 @@ export class Navbar extends Component {
 
 	render() {
 		return (
-			<div className="links">
+			<div className="nav-links">
 				<Nav className="justify-content-between navbar fixed-top" defaultActiveKey="/home" as="ul">
 					<Nav.Item className="navbar-brand">{<img src={Logo} height="70" width="110" />}</Nav.Item>
 					<Nav.Item as="li">
@@ -46,7 +46,7 @@ export class Navbar extends Component {
 						<Nav.Item />
 					</Nav.Item>
 				</Nav>
-				<div className="links" />
+				<div />
 			</div>
 		);
 	}

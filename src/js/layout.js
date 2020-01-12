@@ -15,7 +15,7 @@ import { Footer } from "./component/footer";
 import { Admin } from "./component/admin";
 
 const layoutStyle = {
-	paddingTop: 75
+	paddingTop: 100
 };
 
 //create your first component
