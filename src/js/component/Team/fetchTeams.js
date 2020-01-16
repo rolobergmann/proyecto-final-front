@@ -1,9 +1,8 @@
 import React from "react";
-import ListGroup from "react-bootstrap/ListGroup";
+
 import Spinner from "react-bootstrap/Spinner";
-import Media from "react-bootstrap/Media";
+
 import NewSingleItem from "../Team/NewSingleItem";
-import { checkPropTypes } from "prop-types";
 
 var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
@@ -14,18 +13,18 @@ var requestOptions = {
 	redirect: "follow"
 };
 
-export class ApiQuick extends React.Component {
+export default class FetchTeams extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			error: null,
 			isLoaded: false,
-			playerinfo: {}
+			items: []
 		};
 	}
 
 	componentDidMount() {
-		fetch("https://ovrstat.com/stats/pc/AirMann-1713", requestOptions)
+		fetch("http://localhost:3000/teams", requestOptions)
 			.then(resp => {
 				console.log(resp.ok); // will be true if the response is successfull
 				console.log(resp.status); // the status code = 200 or code = 400 etc.
@@ -34,13 +33,13 @@ export class ApiQuick extends React.Component {
 			.then(data => {
 				this.setState({
 					isLoaded: true,
-					playerinfo: {
-						icon: data.icon,
-						name: data.name,
-						won: data.quickPlayStats.careerStats.allHeroes.game.gamesWon,
-						lost: data.quickPlayStats.careerStats.allHeroes.game.gamesLost,
-						time: data.quickPlayStats.careerStats.allHeroes.game.timePlayed
-					}
+					items: data.map(item => ({
+						id: item.id,
+						logo: item.logo,
+						name: item.name,
+						tag: item.tag,
+						owner: item.owner
+					}))
 				});
 				//here is were your code should start after the fetch finishes
 				console.log(data); //this will print on the console the exact object received from the server
@@ -49,6 +48,16 @@ export class ApiQuick extends React.Component {
 				//error handling
 				console.log(error);
 			});
+	}
+
+	renderItems() {
+		return this.state.items.map(function(item, key) {
+			return (
+				<li key={item.id}>
+					<NewSingleItem item={item} />
+				</li>
+			);
+		});
 	}
 
 	render() {
@@ -62,24 +71,7 @@ export class ApiQuick extends React.Component {
 				</Spinner>
 			);
 		} else {
-			return (
-				<Media>
-					<img
-						width={128}
-						height={128}
-						className="align-self-start mr-3"
-						src={this.state.playerinfo.icon}
-						alt="Icono de Perfil"
-					/>
-					<Media.Body>
-						<h5>{this.state.playerinfo.name}</h5>
-						<ListGroup variant="flush">
-							<ListGroup.Item>Partidas Ganadas - {this.state.playerinfo.won}</ListGroup.Item>
-							<ListGroup.Item>Tiempo Jugado - {this.state.playerinfo.time}</ListGroup.Item>
-						</ListGroup>
-					</Media.Body>
-				</Media>
-			);
+			return <ul>{this.renderItems()}</ul>;
 		}
 	}
 }

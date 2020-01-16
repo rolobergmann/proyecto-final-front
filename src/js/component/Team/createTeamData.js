@@ -13,18 +13,6 @@ export const CreateTeam = () => (
 			<Form.Label>Selecciona los juegos en los que participaran!</Form.Label>
 			<Form.Control as="select">
 				<option>Overwatch</option>
-				<option>DOTA</option>
-				<option>League of Legends</option>
-				<option>Call of Duty</option>
-			</Form.Control>
-		</Form.Group>
-		<Form.Group controlId="exampleForm.ControlSelect2">
-			<Form.Label>Selecciona los juegos en los que participaran!</Form.Label>
-			<Form.Control as="select" multiple>
-				<option>Overwatch</option>
-				<option>DOTA</option>
-				<option>League of Legends</option>
-				<option>Call of Duty</option>
 			</Form.Control>
 		</Form.Group>
 		<Form.Group controlId="exampleForm.ControlTextarea0">
