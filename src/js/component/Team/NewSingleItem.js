@@ -1,22 +1,25 @@
 import React, { Component } from "react";
 import Media from "react-bootstrap/Media";
 import ListGroup from "react-bootstrap/ListGroup";
+import Card from "react-bootstrap/Card";
 import { checkPropTypes, PropTypes } from "prop-types";
 
 const NewSingleItem = ({ item }) => (
-	<Media>
-		<Media.Body>
-			<h5>{item.name}</h5>
-			<ListGroup variant="flush">
-				<ListGroup.Item>Nombre del equipo - {item.name}</ListGroup.Item>
-				<ListGroup.Item>TAG - {item.tag}</ListGroup.Item>
-				<ListGroup.Item>Owner - {item.owner}</ListGroup.Item>
-			</ListGroup>
-		</Media.Body>
-	</Media>
+	<Card style={{ width: "18rem" }}>
+		<Card.Img variant="top" src={item.logo} />
+		<Card.Body>
+			<Card.Title>{item.name}</Card.Title>
+
+			<ul type="square">
+				<li>Nombre del equipo - {item.name}</li>
+				<li>TAG - {item.tag}</li>
+				<li>Owner - {item.owner}</li>
+			</ul>
+		</Card.Body>
+	</Card>
 );
 
 NewSingleItem.propTypes = {
-	item: PropTypes.string
+	item: PropTypes.object
 };
 export default NewSingleItem;

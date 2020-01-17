@@ -1,7 +1,5 @@
 import React from "react";
-
 import Spinner from "react-bootstrap/Spinner";
-
 import NewSingleItem from "../Team/NewSingleItem";
 
 var myHeaders = new Headers();
@@ -23,7 +21,7 @@ export default class FetchTeams extends React.Component {
 		};
 	}
 
-	componentDidMount() {
+	async componentDidMount() {
 		fetch("http://localhost:3000/teams", requestOptions)
 			.then(resp => {
 				console.log(resp.ok); // will be true if the response is successfull
@@ -51,13 +49,14 @@ export default class FetchTeams extends React.Component {
 	}
 
 	renderItems() {
-		return this.state.items.map(function(item, key) {
-			return (
-				<li key={item.id}>
-					<NewSingleItem item={item} />
-				</li>
-			);
-		});
+		let items = this.state.items;
+		return (
+			<div>
+				{items.map(item => (
+					<NewSingleItem key={item.tag} item={item} />
+				))}
+			</div>
+		);
 	}
 
 	render() {
@@ -71,7 +70,7 @@ export default class FetchTeams extends React.Component {
 				</Spinner>
 			);
 		} else {
-			return <ul>{this.renderItems()}</ul>;
+			return <div>{this.renderItems()}</div>;
 		}
 	}
 }
