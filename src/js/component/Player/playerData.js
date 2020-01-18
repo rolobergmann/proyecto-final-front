@@ -3,136 +3,179 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Avatar from "../../../img/avatarGamer.png";
 
+var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+
 export class PlayerData extends React.Component {
+	constructor() {
+		super();
+		this.state = { email: "", firstname: "", lastname: "", username: "", image: Avatar, bio: "", password: "" };
+	}
+	handleChange = event => {
+		this.setState({ [event.target.name]: event.target.value });
+	};
+
+	handleSubmit = event => {
+		event.preventDefault();
+		console.log("email : " + this.state.email);
+		console.log("First Name : " + this.state.firstname);
+		console.log("Last Name : " + this.state.lastname);
+		console.log("User Name : " + this.state.username);
+		console.log("Avatar : " + this.state.image);
+		console.log("Bio : " + this.state.bio);
+		console.log("Password: " + this.state.password);
+		const url = "http://localhost:3000/signup";
+		const data = {
+			email: this.state.email,
+			firstname: this.state.firstname,
+			lastname: this.state.lastname,
+			username: this.state.username,
+			image: this.state.image,
+			bio: this.state.bio,
+			password: this.state.password
+		};
+		console.log(data);
+		fetch(url, {
+			headers: myHeaders,
+			method: "POST", // or 'PUT',
+			mode: "cors",
+			body: JSON.stringify(data) // data can be 'string' or {object}!
+		})
+			.then(response => response.text())
+			.then(result => console.log(result))
+			.catch(error => console.log("error", error));
+	};
+
 	render() {
 		return (
-			<div className="card mb-6">
-				<div className="row no-gutters">
-					<div className="col-md-4">
-						<img src={Avatar} className="card-img" alt="..." />
-						<div className="container">
-							<div className="input-group-prepend">
-								<span className="input-group-text">Avatar</span>
+			<form onSubmit={this.handleSubmit}>
+				<div className="card mb-6">
+					<div className="row no-gutters">
+						<div className="col-md-4">
+							<img src={this.state.image} className="card-img" alt="..." />
+							<div className="container">
+								<div className="input-group-prepend">
+									<span className="input-group-text">Avatar</span>
 
-								<div className="custom-file">
-									<input type="file" className="custom-file-input" id="inputGroupFile01" />
-									<label className="custom-file-label" forHtml="inputGroupFile01">
-										Select your file
-									</label>
+									<input
+										type="url"
+										className="form-control"
+										aria-label="Sizing example input"
+										aria-describedby="inputGroup-sizing-default"
+										name="image"
+										onChange={this.handleChange}
+									/>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div className="col-md-8">
-						<div className="card-header">Nick here</div>
-						<div className="card-body">
-							<p className="card-text">
-								<div className="input-group col-md-8">
-									<div className="input-group-prepend">
-										<span className="input-group-text" id="inputGroup-sizing-default">
-											Nombre
-										</span>
+						<div className="col-md-8">
+							<div className="card-header">{this.state.username}</div>
+							<div className="card-body">
+								<p className="card-text">
+									<div className="input-group col-md-8">
+										<div className="input-group-prepend">
+											<span className="input-group-text">Nombre</span>
+										</div>
+										<input
+											type="text"
+											className="form-control"
+											aria-label="Sizing example input"
+											aria-describedby="inputGroup-sizing-default"
+											name="firstname"
+											onChange={this.handleChange}
+										/>
 									</div>
-									<input
-										type="text"
-										className="form-control"
-										aria-label="Sizing example input"
-										aria-describedby="inputGroup-sizing-default"
-									/>
-								</div>
-							</p>
+								</p>
 
-							<p className="card-text">
-								<div className="input-group col-md-8">
-									<div className="input-group-prepend">
-										<span className="input-group-text" id="inputGroup-sizing-default">
-											Edad
-										</span>
+								<p className="card-text">
+									<div className="input-group col-md-8">
+										<div className="input-group-prepend">
+											<span className="input-group-text">Apellido</span>
+										</div>
+										<input
+											type="text"
+											className="form-control"
+											aria-label="Sizing example input"
+											aria-describedby="inputGroup-sizing-default"
+											name="lastname"
+											onChange={this.handleChange}
+										/>
 									</div>
-									<input
-										type="text"
-										className="form-control"
-										aria-label="Sizing example input"
-										aria-describedby="inputGroup-sizing-default"
-									/>
-								</div>
-							</p>
+								</p>
+								<p className="card-text">
+									<div className="input-group col-md-8">
+										<div className="input-group-prepend">
+											<span className="input-group-text">Nick</span>
+										</div>
+										<input
+											type="text"
+											className="form-control"
+											aria-label="Sizing example input"
+											aria-describedby="inputGroup-sizing-default"
+											name="username"
+											onChange={this.handleChange}
+										/>
+									</div>
+								</p>
 
-							<p className="card-text">
-								<div className="input-group col-md-12">
-									<div className="input-group-prepend">
-										<span className="input-group-text" id="inputGroup-sizing-default">
-											Sexo
-										</span>
+								<p className="card-text">
+									<div className="input-group col-md-8">
+										<div className="input-group-prepend">
+											<span className="input-group-text">Email</span>
+										</div>
+										<input
+											type="email"
+											className="form-control"
+											aria-label="Sizing example input"
+											aria-describedby="inputGroup-sizing-default"
+											name="email"
+											onChange={this.handleChange}
+										/>
 									</div>
-									<div className="input-group col-md-6">
-										<select className="custom-select" id="inputGroupSelect01">
-											<option selected>Seleccione...</option>
-											<option value="1">Masculino</option>
-											<option value="2">Femenino</option>
-										</select>
-									</div>
-								</div>
-							</p>
+								</p>
 
-							<p className="card-text">
-								<div className="input-group col-md-8">
-									<div className="input-group-prepend">
-										<span className="input-group-text" id="inputGroup-sizing-default">
-											Ciudad
-										</span>
+								<p className="card-text">
+									<div className="input-group col-md-8">
+										<div className="input-group-prepend">
+											<span className="input-group-text">Password</span>
+										</div>
+										<input
+											type="password"
+											className="form-control"
+											aria-label="Sizing example input"
+											aria-describedby="inputGroup-sizing-default"
+											name="password"
+											onChange={this.handleChange}
+										/>
 									</div>
-									<input
-										type="text"
-										className="form-control"
-										aria-label="Sizing example input"
-										aria-describedby="inputGroup-sizing-default"
-									/>
-								</div>
-							</p>
-							<p className="card-text">
-								<div className="input-group col-md-8">
-									<div className="input-group-prepend">
-										<span className="input-group-text" id="inputGroup-sizing-default">
-											Pais
-										</span>
+								</p>
+								<p className="card-text">
+									<div className="input-group col-md-8">
+										<div className="input-group-prepend">
+											<span className="input-group-text">Bio</span>
+										</div>
+										<input
+											type="text"
+											className="form-control"
+											aria-label="Sizing example input"
+											aria-describedby="inputGroup-sizing-default"
+											name="bio"
+											onChange={this.handleChange}
+										/>
 									</div>
-									<input
-										type="text"
-										className="form-control"
-										aria-label="Sizing example input"
-										aria-describedby="inputGroup-sizing-default"
-									/>
-								</div>
-							</p>
+								</p>
 
-							<p className="card-text">
-								<div className="input-group col-md-12">
-									<div className="input-group-prepend">
-										<span className="input-group-text" id="inputGroup-sizing-default">
-											Juegos
-										</span>
+								<p className="card-text">
+									<div className="input-group col-md-12">
+										<input type="submit" value="Crear" />
+										<input type="reset" value="Borrar" />
 									</div>
-									<input
-										type="text"
-										className="form-control"
-										aria-label="Sizing example input"
-										aria-describedby="inputGroup-sizing-default"
-									/>
-									<div className="input-group col-md-6">
-										<select className="custom-select" id="inputGroupSelect01">
-											<option selected>Choose...</option>
-											<option value="1">One</option>
-											<option value="2">Two</option>
-											<option value="3">Three</option>
-										</select>
-									</div>
-								</div>
-							</p>
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</form>
 		);
 	}
 }
