@@ -7,7 +7,7 @@ export class Admin extends Component {
 	render() {
 		return (
 			<div className="container">
-				<div clasdName="row">
+				<div className="row">
 					<h1>Bienvenidos al Panel de Administracion</h1>
 					<br />
 					<Accordion>

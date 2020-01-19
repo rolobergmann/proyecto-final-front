@@ -5,11 +5,46 @@ import "bootstrap/dist/css/bootstrap.css";
 import Avatar from "../../img/avatar.png";
 import "../../styles/login.scss";
 
+var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+
 export class Login extends React.Component {
 	constructor(props) {
 		super(props);
-	}
 
+		this.state = { email: "", password: "" };
+	}
+	handleChange = event => {
+		this.setState({ [event.target.name]: event.target.value });
+	};
+	handleSubmit = event => {
+		event.preventDefault();
+		console.log("Email: " + this.state.email);
+		console.log("Password: " + this.state.password);
+		const url = "http://localhost:3000/login";
+		const data = {
+			email: this.state.email,
+			password: this.state.password
+		};
+		console.log(data);
+		fetch(url, {
+			headers: myHeaders,
+			method: "POST", // or 'PUT',
+			mode: "cors",
+			body: JSON.stringify(data) // data can be 'string' or {object}!
+		})
+			.then(response => response.text())
+			.then(result => {
+				console.log(result);
+				if (result.status === 200) {
+					setAuthTokens(result.data);
+					setLoggedIn(true);
+				} else {
+					setIsError(true);
+				}
+			})
+			.catch(error => console.log("error", error));
+	};
 	state = {
 		handleClose: false,
 		handleShow: false,
@@ -28,57 +63,47 @@ export class Login extends React.Component {
 		return (
 			<>
 				<Nav.Link eventKey="link-1" onClick={() => this.handleShow()}>
-					Registro
+					Login
 				</Nav.Link>
-				<Modal show={this.state.show} onHide={this.handleClose} animation={true} className="modal-body">
+				<Modal show={this.state.show} onHide={this.handleClose} animation={true} size="sm">
+					<Modal.Header closeButton>
+						<Modal.Title>Login de Usuario</Modal.Title>
+					</Modal.Header>
 					<Modal.Body>
 						<div id="myModal" className="modal-fade">
 							<div className="modal-dialog modal-login-new">
 								<div className="modal-content">
-									<div className="modal-header-new">
-										<div className="avatar">
-											<img src={Avatar} alt="Avatar" />
-											<h4 className="modal-title">Member Login</h4>
+									<form onSubmit={this.handleSubmit}>
+										<div className="form-group">
+											<input
+												type="text"
+												className="form-control-new"
+												name="email"
+												placeholder="Email"
+												required="required"
+												onChange={this.handleChange}
+											/>
+										</div>
+										<div className="form-group">
+											<input
+												type="password"
+												className="form-control-new"
+												name="password"
+												placeholder="Password"
+												required="required"
+												onChange={this.handleChange}
+											/>
+										</div>
+										<div className="form-group">
 											<button
-												type="button"
-												className="close"
-												data-dismiss="modal"
-												aria-hidden="true">
-												&times;
+												type="submit"
+												className="btn-new btn-new-primary btn-new-lg btn-new-block login-btn-new">
+												Login
 											</button>
 										</div>
-										<div className="modal-body">
-											<form method="post">
-												<div className="form-group">
-													<input
-														type="text"
-														className="form-control-new"
-														name="username"
-														placeholder="Username"
-														required="required"
-													/>
-												</div>
-												<div className="form-group">
-													<input
-														type="password"
-														className="form-control-new"
-														name="password"
-														placeholder="Password"
-														required="required"
-													/>
-												</div>
-												<div className="form-group">
-													<button
-														type="submit"
-														className="btn-new btn-new-primary btn-new-lg btn-new-block login-btn-new">
-														Login
-													</button>
-												</div>
-											</form>
-										</div>
-										<div className="modal-footer-new">
-											<a href="#">Forgot Password?</a>
-										</div>
+									</form>
+									<div className="modal-footer-new">
+										<a href="#">Forgot Password?</a>
 									</div>
 								</div>
 							</div>
