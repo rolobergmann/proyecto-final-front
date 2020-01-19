@@ -2,14 +2,22 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Avatar from "../../../img/avatarGamer.png";
-
-var myHeaders = new Headers();
+export var blizzardID;
+export var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
-
 export class PlayerData extends React.Component {
 	constructor() {
 		super();
-		this.state = { email: "", firstname: "", lastname: "", username: "", image: Avatar, bio: "", password: "" };
+		this.state = {
+			email: "",
+			firstname: "",
+			lastname: "",
+			username: "",
+			blizzardID: "",
+			image: Avatar,
+			bio: "",
+			password: ""
+		};
 	}
 	handleChange = event => {
 		this.setState({ [event.target.name]: event.target.value });
@@ -21,6 +29,7 @@ export class PlayerData extends React.Component {
 		console.log("First Name : " + this.state.firstname);
 		console.log("Last Name : " + this.state.lastname);
 		console.log("User Name : " + this.state.username);
+		console.log("Blizzard ID : " + this.state.blizzardID);
 		console.log("Avatar : " + this.state.image);
 		console.log("Bio : " + this.state.bio);
 		console.log("Password: " + this.state.password);
@@ -31,6 +40,7 @@ export class PlayerData extends React.Component {
 			lastname: this.state.lastname,
 			username: this.state.username,
 			image: this.state.image,
+			blizzardID: this.state.blizzardID,
 			bio: this.state.bio,
 			password: this.state.password
 		};
@@ -113,6 +123,22 @@ export class PlayerData extends React.Component {
 											aria-label="Sizing example input"
 											aria-describedby="inputGroup-sizing-default"
 											name="username"
+											onChange={this.handleChange}
+										/>
+									</div>
+								</p>
+								<p className="card-text">
+									<div className="input-group col-md-8">
+										<div className="input-group-prepend">
+											<span className="input-group-text">Blizzard ID</span>
+										</div>
+										<input
+											type="text"
+											className="form-control"
+											aria-label="Sizing example input"
+											aria-describedby="inputGroup-sizing-default"
+											name="blizzardID"
+											placeholder="user-1234"
 											onChange={this.handleChange}
 										/>
 									</div>
