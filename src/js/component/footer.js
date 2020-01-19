@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { Link } from "react-router-dom";
-import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 import "../../styles/footer.scss";
 
 export const Footer = () => (
@@ -31,19 +30,19 @@ export const Footer = () => (
 					<h4 className="mt-lg-0 mt-sm-3">Links</h4>
 					<ul className="m-0 p-0">
 						<li>
-							- <Link to="/">Home</Link>
+							<a href="URL">Home</a>
 						</li>
 						<li>
-							- <Link to="/player">Tu Perfil</Link>
+							<a href="URL">Home</a>
 						</li>
 						<li>
-							- <Link to="/teams_home">Equipos</Link>
+							<a href="URL">Home</a>
 						</li>
 						<li>
-							- <Link to="/team_create">Crea tu euipo</Link>
+							<a href="URL">Home</a>
 						</li>
 						<li>
-							- <Link to="/admin">Admin</Link>
+							<a href="URL">Home</a>
 						</li>
 					</ul>
 				</div>
