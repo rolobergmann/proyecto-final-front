@@ -25,16 +25,7 @@ export class ApiQuick extends React.Component {
 	}
 
 	componentDidMount() {
-		fetch(
-			"https://ow-api.com/v1/stats/pc/global/" + this.state.currentUser.user.blizzardID + "/profile",
-			requestOptions
-		)
-			.then(resp => {
-				console.log(resp.ok); // will be true if the response is successfull
-				console.log(resp.status); // the status code = 200 or code = 400 etc.
-				// console.log(resp.text()); // will try return the exact result as string
-				return resp.json(); // (returns promise) will try to parse the result as json as return a promise that you can .then for results
-			})
+		fetch("https://ovrstat.com/stats/pc/" + this.state.currentUser.user.blizzardID, requestOptions)
 			.then(resp => {
 				console.log(resp.ok); // will be true if the response is successfull
 				console.log(resp.status); // the status code = 200 or code = 400 etc.

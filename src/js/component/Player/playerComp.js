@@ -25,10 +25,7 @@ export class ApiComp extends React.Component {
 	}
 
 	componentDidMount() {
-		fetch(
-			"https://ow-api.com/v1/stats/pc/global/" + this.state.currentUser.user.blizzardID + "/profile",
-			requestOptions
-		)
+		fetch("https://ovrstat.com/stats/pc/" + this.state.currentUser.user.blizzardID, requestOptions)
 			.then(resp => {
 				console.log(resp.ok); // will be true if the response is successfull
 				console.log(resp.status); // the status code = 200 or code = 400 etc.
