@@ -2,7 +2,7 @@ import React from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import Spinner from "react-bootstrap/Spinner";
 import Media from "react-bootstrap/Media";
-import { checkPropTypes } from "prop-types";
+import { authenticationService } from "../auth/authentication.service";
 
 var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
@@ -19,15 +19,20 @@ export class ApiComp extends React.Component {
 		this.state = {
 			error: null,
 			isLoaded: false,
-			playerinfo: {}
+			playerinfo: {},
+			currentUser: authenticationService.currentUserValue
 		};
 	}
 
 	componentDidMount() {
-		fetch("https://ovrstat.com/stats/pc/AirMann-1713", requestOptions)
+		fetch(
+			"https://ow-api.com/v1/stats/pc/global/" + this.state.currentUser.user.blizzardID + "/profile",
+			requestOptions
+		)
 			.then(resp => {
 				console.log(resp.ok); // will be true if the response is successfull
 				console.log(resp.status); // the status code = 200 or code = 400 etc.
+				// console.log(resp.text()); // will try return the exact result as string
 				return resp.json(); // (returns promise) will try to parse the result as json as return a promise that you can .then for results
 			})
 			.then(data => {

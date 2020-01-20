@@ -2,12 +2,14 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Avatar from "../../../img/avatarGamer.png";
+import { authenticationService } from "../auth/authentication.service";
+
 export var blizzardID;
 export var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 export class PlayerData extends React.Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			email: "",
 			firstname: "",
@@ -17,6 +19,10 @@ export class PlayerData extends React.Component {
 			image: Avatar,
 			bio: "",
 			password: ""
+		};
+		this.state = {
+			currentUser: authenticationService.currentUserValue,
+			users: null
 		};
 	}
 	handleChange = event => {
@@ -57,12 +63,15 @@ export class PlayerData extends React.Component {
 	};
 
 	render() {
+		const user = this.state.currentUser.user;
+		console.log(this.state.currentUser);
 		return (
 			<form onSubmit={this.handleSubmit}>
 				<div className="card mb-6">
+					<div className="card-header">{user.username}</div>
 					<div className="row no-gutters">
 						<div className="col-md-4">
-							<img src={this.state.image} className="card-img" alt="..." />
+							<img src={user.image} className="card-img" alt="..." />
 							<div className="container">
 								<div className="input-group-prepend">
 									<span className="input-group-text">Avatar</span>
@@ -79,7 +88,6 @@ export class PlayerData extends React.Component {
 							</div>
 						</div>
 						<div className="col-md-8">
-							<div className="card-header">{this.state.username}</div>
 							<div className="card-body">
 								<p className="card-text">
 									<div className="input-group col-md-8">
