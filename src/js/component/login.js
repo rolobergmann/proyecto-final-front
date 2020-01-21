@@ -18,53 +18,6 @@ class LoginPage extends React.Component {
 			this.props.history.push("/");
 		}
 	}
-<<<<<<< HEAD
-	handleChange = event => {
-		this.setState({ [event.target.name]: event.target.value });
-	};
-	handleSubmit = event => {
-		event.preventDefault();
-		console.log("Email: " + this.state.email);
-		console.log("Password: " + this.state.password);
-		const url = "http://localhost:3000/signup";
-		const data = {
-			email: this.state.email,
-			password: this.state.password
-		};
-		console.log(data);
-		fetch(url, {
-			headers: myHeaders,
-			method: "POST", // or 'PUT',
-			mode: "no-cors",
-			body: JSON.stringify(data) // data can be 'string' or {object}!
-		})
-			.then(response => response.text())
-			.then(result => {
-				console.log(result);
-				if (result.status === 201) {
-					setAuthTokens(result.data);
-					setLoggedIn(true);
-				} else {
-					setIsError(true);
-				}
-			})
-			.catch(error => console.log("error", error));
-	};
-	state = {
-		handleClose: false,
-		handleShow: false,
-		show: false
-	};
-
-	handleClose = () => {
-		this.setState({ show: false });
-	};
-
-	handleShow = () => {
-		this.setState({ show: true });
-	};
-=======
->>>>>>> c4ec104a2e14465f6505d09036ab38672a459104
 
 	render() {
 		return (
@@ -88,7 +41,9 @@ class LoginPage extends React.Component {
 						setStatus();
 						authenticationService.login(username, password).then(
 							user => {
-								const { from } = this.props.location.state || { from: { pathname: "/" } };
+								const { from } = this.props.location.state || {
+									from: { pathname: "/" }
+								};
 								this.props.history.push(from);
 							},
 							error => {
