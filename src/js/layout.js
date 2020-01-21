@@ -32,7 +32,8 @@ class Layout extends React.Component {
 
 		this.state = {
 			currentUser: null,
-			isOpen: false
+			isOpen: false,
+			loggedUser: authenticationService.currentUserValue
 		};
 	}
 	toggleCollapse = () => {
@@ -50,6 +51,7 @@ class Layout extends React.Component {
 
 	render() {
 		const { currentUser } = this.state;
+		console.log(currentUser);
 		return (
 			<div className="d-flex flex-column h-100" style={layoutStyle}>
 				<Router history={history}>
@@ -76,16 +78,20 @@ class Layout extends React.Component {
 									Tu perfil
 								</Link>
 							</Nav.Item>
-							<Nav.Item as="li">
-								<Link to="/admin" className="nav-item nav-link">
-									Admin
-								</Link>
-							</Nav.Item>
-							<Nav.Item as="li">
-								<Link to="/LoginPage" className="nav-item nav-link">
-									Login
-								</Link>
-							</Nav.Item>
+							{currentUser && (
+								<Nav.Item as="li">
+									<Link to="/admin" className="nav-item nav-link">
+										Admin
+									</Link>
+								</Nav.Item>
+							)}
+							{currentUser == null && (
+								<Nav.Item as="li">
+									<Link to="/LoginPage" className="nav-item nav-link">
+										Login
+									</Link>
+								</Nav.Item>
+							)}
 							{currentUser && (
 								<Nav.Item as="li">
 									<a onClick={this.logout} className="nav-item nav-link">

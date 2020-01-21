@@ -27,7 +27,7 @@ class PlayerEdit extends React.Component {
 
 	handleSubmit = event => {
 		event.preventDefault();
-		this.props.history.push("/player");
+		this.props.history.goBack();
 		console.log("email : " + this.state.email);
 		console.log("First Name : " + this.state.firstname);
 		console.log("Last Name : " + this.state.lastname);
