@@ -18,7 +18,6 @@ class LoginPage extends React.Component {
 			this.props.history.push("/");
 		}
 	}
-<<<<<<< HEAD
 	handleChange = event => {
 		this.setState({ [event.target.name]: event.target.value });
 	};
@@ -63,8 +62,6 @@ class LoginPage extends React.Component {
 	handleShow = () => {
 		this.setState({ show: true });
 	};
-=======
->>>>>>> c4ec104a2e14465f6505d09036ab38672a459104
 
 	render() {
 		return (
