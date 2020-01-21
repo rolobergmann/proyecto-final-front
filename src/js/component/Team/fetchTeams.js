@@ -16,12 +16,8 @@ export const FetchTeams = () => {
 
 						<Card.Body>
 							<Link to={"/team/" + team.ID}>
-								<Card.Title>{team.name}</Card.Title>
+								<Card.Title variant="center">{team.name}</Card.Title>
 							</Link>
-							<ul type="square">
-								<li>Nombre del equipo - {team.name}</li>
-								<li>TAG - {team.tag}</li>
-							</ul>
 						</Card.Body>
 					</Card>
 				))}
