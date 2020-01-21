@@ -1,11 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
-import Card from "react-bootstrap/Card";
-import { Button } from "react-bootstrap";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import FetchTeams from "../component/Team/fetchTeams";
-
+import { FetchTeams } from "../component/Team/fetchTeams";
 import { Context } from "../store/appContext";
 
 import "../../styles/demo.scss";

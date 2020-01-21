@@ -21,7 +21,7 @@ export class Login extends React.Component {
 		event.preventDefault();
 		console.log("Email: " + this.state.email);
 		console.log("Password: " + this.state.password);
-		const url = "http://localhost:3000/login";
+		const url = "http://localhost:3000/signup";
 		const data = {
 			email: this.state.email,
 			password: this.state.password
@@ -30,13 +30,13 @@ export class Login extends React.Component {
 		fetch(url, {
 			headers: myHeaders,
 			method: "POST", // or 'PUT',
-			mode: "cors",
+			mode: "no-cors",
 			body: JSON.stringify(data) // data can be 'string' or {object}!
 		})
 			.then(response => response.text())
 			.then(result => {
 				console.log(result);
-				if (result.status === 200) {
+				if (result.status === 201) {
 					setAuthTokens(result.data);
 					setLoggedIn(true);
 				} else {

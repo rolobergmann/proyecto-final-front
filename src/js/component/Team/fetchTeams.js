@@ -1,76 +1,33 @@
-import React from "react";
-import Spinner from "react-bootstrap/Spinner";
-import NewSingleItem from "../Team/NewSingleItem";
+import React, { useContext } from "react";
+import { Context } from "../../store/appContext";
+import Card from "react-bootstrap/Card";
+import Row from "react-bootstrap/Row";
+import { Link } from "react-router-dom";
 
-var myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
+export const FetchTeams = () => {
+	const { store } = useContext(Context);
 
-var requestOptions = {
-	method: "GET",
-	headers: myHeaders,
-	redirect: "follow"
+	return (
+		<div>
+			<Row md={5} className="justify-content-md-center">
+				{store.teams.map(team => (
+					<Card key={team.ID} style={{ width: "18rem" }}>
+						<Card.Img variant="center" src={`/${team.logo}`} />
+
+						<Card.Body>
+							<Link to={"/team/" + team.ID}>
+								<Card.Title>{team.name}</Card.Title>
+							</Link>
+							<ul type="square">
+								<li>Nombre del equipo - {team.name}</li>
+								<li>TAG - {team.tag}</li>
+							</ul>
+						</Card.Body>
+					</Card>
+				))}
+			</Row>
+		</div>
+	);
 };
 
-export default class FetchTeams extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			error: null,
-			isLoaded: false,
-			items: []
-		};
-	}
-
-	async componentDidMount() {
-		fetch("http://localhost:3000/teams", requestOptions)
-			.then(resp => {
-				console.log(resp.ok); // will be true if the response is successfull
-				console.log(resp.status); // the status code = 200 or code = 400 etc.
-				return resp.json(); // (returns promise) will try to parse the result as json as return a promise that you can .then for results
-			})
-			.then(data => {
-				this.setState({
-					isLoaded: true,
-					items: data.map(item => ({
-						id: item.id,
-						logo: item.logo,
-						name: item.name,
-						tag: item.tag,
-						owner: item.owner
-					}))
-				});
-				//here is were your code should start after the fetch finishes
-				console.log(data); //this will print on the console the exact object received from the server
-			})
-			.catch(error => {
-				//error handling
-				console.log(error);
-			});
-	}
-
-	renderItems() {
-		let items = this.state.items;
-		return (
-			<div>
-				{items.map(item => (
-					<NewSingleItem key={item.tag} item={item} />
-				))}
-			</div>
-		);
-	}
-
-	render() {
-		const { error, isLoaded, data } = this.state;
-		if (error) {
-			return <div>Error: {error.message}</div>;
-		} else if (!isLoaded) {
-			return (
-				<Spinner animation="border" role="status">
-					<span className="sr-only">Loading...</span>
-				</Spinner>
-			);
-		} else {
-			return <div>{this.renderItems()}</div>;
-		}
-	}
-}
+export default FetchTeams;

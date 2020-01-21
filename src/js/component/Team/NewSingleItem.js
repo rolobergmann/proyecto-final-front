@@ -3,23 +3,29 @@ import Media from "react-bootstrap/Media";
 import ListGroup from "react-bootstrap/ListGroup";
 import Card from "react-bootstrap/Card";
 import { checkPropTypes, PropTypes } from "prop-types";
+import Consumer from "../../store/newContext";
 
-const NewSingleItem = ({ item }) => (
-	<Card style={{ width: "18rem" }}>
-		<Card.Img variant="top" src={item.logo} />
-		<Card.Body>
-			<Card.Title>{item.name}</Card.Title>
-
-			<ul type="square">
-				<li>Nombre del equipo - {item.name}</li>
-				<li>TAG - {item.tag}</li>
-				<li>Owner - {item.owner}</li>
-			</ul>
-		</Card.Body>
-	</Card>
+// const NewSingleItem = ({ item }) => (
+const NewSingleItem = () => (
+	<div className="mt-4">
+		<div className="row">
+			<Consumer>
+				{value => (
+					<div>
+						{value.user.name}
+						<Card style={{ width: "18rem" }}>
+							<Card.Body>
+								<Card.Title>{value.user.nick}</Card.Title>
+							</Card.Body>
+						</Card>
+					</div>
+				)}
+			</Consumer>
+		</div>
+	</div>
 );
 
-NewSingleItem.propTypes = {
-	item: PropTypes.object
-};
+// NewSingleItem.propTypes = {
+// 	item: PropTypes.object
+// };
 export default NewSingleItem;
