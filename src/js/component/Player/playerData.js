@@ -3,7 +3,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Avatar from "../../../img/avatarGamer.png";
 import { authenticationService } from "../auth/authentication.service";
-import { PlayerEdit } from "./playerEdit";
+import PlayerEdit from "./playerEdit";
+import { Container, Row, Col } from "react-bootstrap";
+import ListGroup from "react-bootstrap/ListGroup";
 
 export var blizzardID;
 export var myHeaders = new Headers();
@@ -38,39 +40,6 @@ export class PlayerData extends React.Component {
 		this.setState({ [event.target.name]: event.target.value });
 	};
 
-	handleSubmit = event => {
-		event.preventDefault();
-		console.log("email : " + this.state.email);
-		console.log("First Name : " + this.state.firstname);
-		console.log("Last Name : " + this.state.lastname);
-		console.log("User Name : " + this.state.username);
-		console.log("Blizzard ID : " + this.state.blizzardID);
-		console.log("Avatar : " + this.state.image);
-		console.log("Bio : " + this.state.bio);
-		console.log("Password: " + this.state.password);
-		const url = "http://localhost:3000/signup";
-		const data = {
-			email: this.state.email,
-			firstname: this.state.firstname,
-			lastname: this.state.lastname,
-			username: this.state.username,
-			image: this.state.image,
-			blizzardID: this.state.blizzardID,
-			bio: this.state.bio,
-			password: this.state.password
-		};
-		console.log(data);
-		fetch(url, {
-			headers: myHeaders,
-			method: "POST", // or 'PUT',
-			mode: "cors",
-			body: JSON.stringify(data) // data can be 'string' or {object}!
-		})
-			.then(response => response.text())
-			.then(result => console.log(result))
-			.catch(error => console.log("error", error));
-	};
-
 	render() {
 		const user = this.state.currentUser.user;
 		console.log(this.state.currentUser);
@@ -78,30 +47,26 @@ export class PlayerData extends React.Component {
 			return <PlayerEdit />;
 		} else {
 			return (
-				<form>
+				<Container>
 					<div className="card mb-6">
 						<div className="card-header">{user.username}</div>
-						<div className="row no-gutters">
-							<div className="col-md-4">
+						<Row className="row no-gutters">
+							<Col className="col-md-4">
 								<img src={user.image} className="card-img" alt="..." />
-								<div className="container">
-									<div className="input-group-prepend">
-										<span className="input-group-text">Avatar</span>
-
-										<input
-											type="url"
-											className="form-control"
-											aria-label="Sizing example input"
-											aria-describedby="inputGroup-sizing-default"
-											name="image"
-											onChange={this.handleChange}
-										/>
-									</div>
-								</div>
-							</div>
-							<div className="col-md-8">
+							</Col>
+							<Col className="col-md-8">
 								<div className="card-body">
-									<p className="card-text">
+									<ListGroup>
+										<ListGroup.Item>
+											{user.first_name} {user.last_name}
+										</ListGroup.Item>
+										<ListGroup.Item>{user.email}</ListGroup.Item>
+										<ListGroup.Item>{user.bio}</ListGroup.Item>
+									</ListGroup>
+									<div className="input-group col-md-12">
+										<button onClick={this.handleShowEdit}>Editar</button>
+									</div>
+									{/* <p className="card-text">
 										<div className="input-group col-md-8">
 											<div className="input-group-prepend">
 												<span className="input-group-text">Nombre</span>
@@ -215,12 +180,12 @@ export class PlayerData extends React.Component {
 										<div className="input-group col-md-12">
 											<button onClick={this.handleShowEdit}>Editar</button>
 										</div>
-									</p>
+									</p> */}
 								</div>
-							</div>
-						</div>
+							</Col>
+						</Row>
 					</div>
-				</form>
+				</Container>
 			);
 		}
 	}
