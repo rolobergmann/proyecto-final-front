@@ -3,11 +3,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Avatar from "../../../img/avatarGamer.png";
 import { authenticationService } from "../auth/authentication.service";
+import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom";
 
 export var blizzardID;
 export var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
-export class PlayerEdit extends React.Component {
+class PlayerEdit extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -25,6 +27,7 @@ export class PlayerEdit extends React.Component {
 
 	handleSubmit = event => {
 		event.preventDefault();
+		this.props.history.push("/player");
 		console.log("email : " + this.state.email);
 		console.log("First Name : " + this.state.firstname);
 		console.log("Last Name : " + this.state.lastname);
@@ -33,7 +36,7 @@ export class PlayerEdit extends React.Component {
 		console.log("Avatar : " + this.state.image);
 		console.log("Bio : " + this.state.bio);
 		console.log("Password: " + this.state.password);
-		const url = "http://localhost:3000/user/edit/<int:" + currentUser.user.id + ">";
+		const url = "http://localhost:3000/user/edit/" + this.state.currentUser.user.id;
 		const data = {
 			email: this.state.email,
 			firstname: this.state.firstname,
@@ -52,28 +55,28 @@ export class PlayerEdit extends React.Component {
 			mode: "cors",
 			body: JSON.stringify(data) // data can be 'string' or {object}!
 		})
-			.then(response => response.text())
-			.then(result => console.log(result))
-			.catch(error => console.log("error", error));
+			.then(response => response.json())
+			.then(data => console.log("data is", data))
+			.catch(error => console.log("error is", error));
 	};
 
 	render() {
-		const user = this.state.currentUser.user;
+		const userEdit = this.state.currentUser.user;
 		console.log(this.state.currentUser);
 		return (
 			<form onSubmit={this.handleSubmit}>
 				<div className="card mb-6">
-					<div className="card-header">Edit + {user.username}</div>
+					<div className="card-header">Edit + {userEdit.username}</div>
 					<div className="row no-gutters">
 						<div className="col-md-4">
-							<img src={user.image} className="card-img" alt="..." />
+							<img src={userEdit.image} className="card-img" alt="..." />
 							<div className="container">
 								<div className="input-group-prepend">
 									<span className="input-group-text">Avatar</span>
 
 									<input
 										type="url"
-										value={user.image}
+										defaultValue={userEdit.image}
 										className="form-control"
 										aria-label="Sizing example input"
 										aria-describedby="inputGroup-sizing-default"
@@ -92,7 +95,7 @@ export class PlayerEdit extends React.Component {
 										</div>
 										<input
 											type="text"
-											value={user.first_name}
+											defaultValue={userEdit.first_name}
 											className="form-control"
 											aria-label="Sizing example input"
 											aria-describedby="inputGroup-sizing-default"
@@ -109,7 +112,7 @@ export class PlayerEdit extends React.Component {
 										</div>
 										<input
 											type="text"
-											value="user.last_name"
+											defaultValue={userEdit.last_name}
 											className="form-control"
 											aria-label="Sizing example input"
 											aria-describedby="inputGroup-sizing-default"
@@ -125,7 +128,7 @@ export class PlayerEdit extends React.Component {
 										</div>
 										<input
 											type="text"
-											value="user.username"
+											defaultValue={userEdit.username}
 											className="form-control"
 											aria-label="Sizing example input"
 											aria-describedby="inputGroup-sizing-default"
@@ -141,7 +144,7 @@ export class PlayerEdit extends React.Component {
 										</div>
 										<input
 											type="text"
-											value="user.blizzardID"
+											defaultValue={userEdit.blizzardID}
 											className="form-control"
 											aria-label="Sizing example input"
 											aria-describedby="inputGroup-sizing-default"
@@ -159,7 +162,7 @@ export class PlayerEdit extends React.Component {
 										</div>
 										<input
 											type="email"
-											value="user.email"
+											defaultValue={userEdit.email}
 											className="form-control"
 											aria-label="Sizing example input"
 											aria-describedby="inputGroup-sizing-default"
@@ -192,7 +195,7 @@ export class PlayerEdit extends React.Component {
 										</div>
 										<input
 											type="text"
-											value={user.bio}
+											defaultValue={userEdit.bio}
 											className="form-control"
 											aria-label="Sizing example input"
 											aria-describedby="inputGroup-sizing-default"
@@ -205,7 +208,7 @@ export class PlayerEdit extends React.Component {
 								<p className="card-text">
 									<div className="input-group col-md-12">
 										<input type="submit" value="Guardar" />
-										<input type="reset" value="Borrar Todo" />
+										<input type="reset" value="Deshacer Cambios" />
 										<a href="/player">
 											<input type="button" value="Volver" />
 										</a>
@@ -219,3 +222,8 @@ export class PlayerEdit extends React.Component {
 		);
 	}
 }
+PlayerEdit.propTypes = {
+	history: PropTypes.any,
+	location: PropTypes.any
+};
+export default withRouter(PlayerEdit);
