@@ -2,6 +2,7 @@ import React from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import Spinner from "react-bootstrap/Spinner";
 import Media from "react-bootstrap/Media";
+import { authenticationService } from "../auth/authentication.service";
 
 var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
@@ -18,12 +19,16 @@ export class ApiResumen extends React.Component {
 		this.state = {
 			error: null,
 			isLoaded: false,
-			playerinfo: {}
+			playerinfo: {},
+			currentUser: authenticationService.currentUserValue
 		};
 	}
 
 	componentDidMount() {
-		fetch("https://ow-api.com/v1/stats/pc/global/AirMann-1713/profile", requestOptions)
+		fetch(
+			"https://ow-api.com/v1/stats/pc/global/" + this.state.currentUser.user.blizzardID + "/profile",
+			requestOptions
+		)
 			.then(resp => {
 				console.log(resp.ok); // will be true if the response is successfull
 				console.log(resp.status); // the status code = 200 or code = 400 etc.
@@ -58,6 +63,9 @@ export class ApiResumen extends React.Component {
 	}
 
 	render() {
+		const user = this.state.currentUser.user;
+		console.log(this.state.currentUser);
+		console.log(this.state.currentUser.user.blizzardID);
 		const { error, isLoaded, data } = this.state;
 		if (error) {
 			return <div>Error: {error.message}</div>;

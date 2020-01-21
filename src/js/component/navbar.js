@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "../../styles/navbar.scss";
-import { Login } from "./login";
 import Logo from "../../img/logonar.png";
 
 export class Navbar extends Component {
@@ -41,8 +40,7 @@ export class Navbar extends Component {
 						<Nav.Link href="/admin">{this.props.test}</Nav.Link>
 					</Nav.Item>
 					<Nav.Item as="li" className="justify-content-end">
-						{" "}
-						<Login />
+						<Nav.Link href="/LoginPage">Login</Nav.Link>
 						<Nav.Item />
 					</Nav.Item>
 				</Nav>

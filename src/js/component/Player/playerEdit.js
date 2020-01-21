@@ -2,23 +2,23 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Avatar from "../../../img/avatarGamer.png";
+import { authenticationService } from "../auth/authentication.service";
+
 export var blizzardID;
 export var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
-export class Register extends React.Component {
-	constructor() {
-		super();
+export class PlayerEdit extends React.Component {
+	constructor(props) {
+		super(props);
 		this.state = {
-			email: "",
-			firstname: "",
-			lastname: "",
-			username: "",
-			blizzardID: "",
-			image: Avatar,
-			bio: "",
-			password: ""
+			currentUser: authenticationService.currentUserValue
 		};
 	}
+	handleHideEdit = () => {
+		this.setState({
+			editMode: false
+		});
+	};
 	handleChange = event => {
 		this.setState({ [event.target.name]: event.target.value });
 	};
@@ -33,7 +33,7 @@ export class Register extends React.Component {
 		console.log("Avatar : " + this.state.image);
 		console.log("Bio : " + this.state.bio);
 		console.log("Password: " + this.state.password);
-		const url = "http://localhost:3000/signup";
+		const url = "http://localhost:3000/user/edit/<int:" + currentUser.user.id + ">";
 		const data = {
 			email: this.state.email,
 			firstname: this.state.firstname,
@@ -42,12 +42,13 @@ export class Register extends React.Component {
 			image: this.state.image,
 			blizzardID: this.state.blizzardID,
 			bio: this.state.bio,
-			password: this.state.password
+			password: this.state.password,
+			editMode: false
 		};
 		console.log(data);
 		fetch(url, {
 			headers: myHeaders,
-			method: "POST", // or 'PUT',
+			method: "PUT", // or 'PUT',
 			mode: "cors",
 			body: JSON.stringify(data) // data can be 'string' or {object}!
 		})
@@ -57,19 +58,22 @@ export class Register extends React.Component {
 	};
 
 	render() {
+		const user = this.state.currentUser.user;
+		console.log(this.state.currentUser);
 		return (
 			<form onSubmit={this.handleSubmit}>
 				<div className="card mb-6">
-					<div className="card-header">{this.state.username}</div>
+					<div className="card-header">Edit + {user.username}</div>
 					<div className="row no-gutters">
 						<div className="col-md-4">
-							<img src={this.state.image} className="card-img" alt="..." />
+							<img src={user.image} className="card-img" alt="..." />
 							<div className="container">
 								<div className="input-group-prepend">
 									<span className="input-group-text">Avatar</span>
 
 									<input
 										type="url"
+										value={user.image}
 										className="form-control"
 										aria-label="Sizing example input"
 										aria-describedby="inputGroup-sizing-default"
@@ -88,6 +92,7 @@ export class Register extends React.Component {
 										</div>
 										<input
 											type="text"
+											value={user.first_name}
 											className="form-control"
 											aria-label="Sizing example input"
 											aria-describedby="inputGroup-sizing-default"
@@ -104,6 +109,7 @@ export class Register extends React.Component {
 										</div>
 										<input
 											type="text"
+											value="user.last_name"
 											className="form-control"
 											aria-label="Sizing example input"
 											aria-describedby="inputGroup-sizing-default"
@@ -115,10 +121,11 @@ export class Register extends React.Component {
 								<p className="card-text">
 									<div className="input-group col-md-8">
 										<div className="input-group-prepend">
-											<span className="input-group-text">Nick</span>
+											<span className="input-group-text">User Name</span>
 										</div>
 										<input
 											type="text"
+											value="user.username"
 											className="form-control"
 											aria-label="Sizing example input"
 											aria-describedby="inputGroup-sizing-default"
@@ -134,6 +141,7 @@ export class Register extends React.Component {
 										</div>
 										<input
 											type="text"
+											value="user.blizzardID"
 											className="form-control"
 											aria-label="Sizing example input"
 											aria-describedby="inputGroup-sizing-default"
@@ -151,6 +159,7 @@ export class Register extends React.Component {
 										</div>
 										<input
 											type="email"
+											value="user.email"
 											className="form-control"
 											aria-label="Sizing example input"
 											aria-describedby="inputGroup-sizing-default"
@@ -171,6 +180,7 @@ export class Register extends React.Component {
 											aria-label="Sizing example input"
 											aria-describedby="inputGroup-sizing-default"
 											name="password"
+											placeholder="Ingrese su password"
 											onChange={this.handleChange}
 										/>
 									</div>
@@ -182,6 +192,7 @@ export class Register extends React.Component {
 										</div>
 										<input
 											type="text"
+											value={user.bio}
 											className="form-control"
 											aria-label="Sizing example input"
 											aria-describedby="inputGroup-sizing-default"
@@ -193,8 +204,11 @@ export class Register extends React.Component {
 
 								<p className="card-text">
 									<div className="input-group col-md-12">
-										<input type="submit" value="Crear" />
-										<input type="reset" value="Borrar" />
+										<input type="submit" value="Guardar" />
+										<input type="reset" value="Borrar Todo" />
+										<a href="/player">
+											<input type="button" value="Volver" />
+										</a>
 									</div>
 								</p>
 							</div>

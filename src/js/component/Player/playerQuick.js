@@ -2,8 +2,7 @@ import React from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import Spinner from "react-bootstrap/Spinner";
 import Media from "react-bootstrap/Media";
-import NewSingleItem from "../Team/NewSingleItem";
-import { checkPropTypes } from "prop-types";
+import { authenticationService } from "../auth/authentication.service";
 
 var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
@@ -20,12 +19,13 @@ export class ApiQuick extends React.Component {
 		this.state = {
 			error: null,
 			isLoaded: false,
-			playerinfo: {}
+			playerinfo: {},
+			currentUser: authenticationService.currentUserValue
 		};
 	}
 
 	componentDidMount() {
-		fetch("https://ovrstat.com/stats/pc/AirMann-1713", requestOptions)
+		fetch("https://ovrstat.com/stats/pc/" + this.state.currentUser.user.blizzardID, requestOptions)
 			.then(resp => {
 				console.log(resp.ok); // will be true if the response is successfull
 				console.log(resp.status); // the status code = 200 or code = 400 etc.
