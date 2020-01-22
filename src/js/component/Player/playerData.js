@@ -61,6 +61,7 @@ export class PlayerData extends React.Component {
 											{user.first_name} {user.last_name}
 										</ListGroup.Item>
 										<ListGroup.Item>{user.email}</ListGroup.Item>
+										<ListGroup.Item>{user.blizzardID}</ListGroup.Item>
 										<ListGroup.Item>{user.bio}</ListGroup.Item>
 									</ListGroup>
 									<div className="input-group col-md-12">
