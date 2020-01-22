@@ -14,6 +14,7 @@ import { Team } from "./views/team";
 import { Players } from "./views/players";
 import { LoginPage } from "./component/login";
 import { Register } from "./component/Registro/registro";
+import Owback from "../img/Owback.jpeg";
 
 import { Footer } from "./component/footer";
 import { Admin } from "./component/admin";
