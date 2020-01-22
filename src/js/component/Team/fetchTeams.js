@@ -19,8 +19,7 @@ export const FetchTeams = () => {
 						variant="center"
 						key={team.ID}
 						style={{ width: "18rem" }}>
-						<Card.Img variant="center" src={`/${team.logo}`} />
-						{team.ID}
+						<Card.Img width={250} height={250} src={`/${team.logo}`} />
 						<Card.Body>
 							<Link to={"/team/" + team.ID}>
 								<Card.Title className="center">{team.name}</Card.Title>

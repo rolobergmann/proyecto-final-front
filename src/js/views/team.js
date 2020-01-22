@@ -17,13 +17,20 @@ export const Team = props => {
 	return (
 		<div>
 			<Media>
-				<img width={200} height={200} className="mr-3" src={`/${store.teams[indice].logo}`} />
+				<img width={200} height={200} className="align-self-center mr-3" src={`/${store.teams[indice].logo}`} />
 				<Media.Body>
-					<h5>
-						{store.teams[indice].tag} -{store.teams[indice].name} Home Page!{" "}
-					</h5>
-					<h4>Team Leader: {ownerTeam}</h4>
-					<p>{store.teams[indice].bio}</p>
+					<h1>
+						{store.teams[indice].tag} {store.teams[indice].name} Page!
+					</h1>
+					<h2>Team Leader: {ownerTeam}</h2>
+					<h5>Biografia</h5>
+					<p>
+						Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin
+						commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum
+						nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+					</p>
+					<h5>Jugadores</h5>
+					<p>Aqui</p>
 				</Media.Body>
 			</Media>
 
