@@ -7,6 +7,7 @@ import { authenticationService } from "./component/auth/authentication.service";
 import injectContext from "./store/appContext";
 import { Nav } from "react-bootstrap";
 import Logo from "../img/logonar.png";
+import Owback from "../img/owback.jpeg";
 
 import { Home } from "./views/home";
 import { Demo } from "./views/demo";
@@ -22,7 +23,8 @@ import { Admin } from "./component/admin";
 import "../styles/navbar.scss";
 
 const layoutStyle = {
-	paddingTop: 100
+	paddingTop: 100,
+	backgroundImage: `url(${Owback})`
 };
 
 //create your first component
