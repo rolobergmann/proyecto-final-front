@@ -10,7 +10,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					logo: ""
 				}
 			],
-			jugadores: {},
+			jugadores: [],
 			registro: [],
 			postulacion: []
 		},
@@ -93,7 +93,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					headers: myHeaders
 				};
 
-				fetch("http://localhost:3000/team/"+team+"/list/", requestOptions)
+				fetch("http://localhost:3000/team/" + team + "/list/", requestOptions)
 					.then(resp => {
 						return resp.json(); // (returns promise) will try to parse the result as json as return a promise that you can .then for results
 					})
@@ -101,9 +101,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						// console.log(data.team_member);
 						// console.log(data.team_member.length);
 						const store = getStore();
-						console.log(store);
+						console.log(data.team_member);
+
 						setStore({ jugadores: data.team_member });
-						data.team_member.map(item => ({
+						/*data.team_member.map(item => ({
 							bio: item.bio,
 							first_name: item.first_name,
 							last_name: item.last_name,
@@ -111,42 +112,46 @@ const getState = ({ getStore, getActions, setStore }) => {
 							blizzardID: item.blizzardID,
 							role: item.role,
 							image: item.image
-						}));
+						})*/
+						console.log(store.jugadores);
 					});
-				// .catch(error => {
-				// 	console.log(error);
-				// });
-			}
 
-			// 	const store = getStore();
-			// 	store.users.map((user => {
-			// 		console.log(user.ID);
-			// 		// if (user.ID == ownerID) {
-			// 		// 	console.log(user.username);
-			// 		// 	return user.username;
-			// 	});
-			// }
-			// Use getActions to call a function within a fuction
-			// exampleFunction: () => {
-			// 	getActions().changeColor(0, "green");
-			// },
-			// loadSomeData: () => {
-			// 	/**
-			// 		fetch().then().then(data => setStore({ "foo": data.bar }))
-			// 	*/
-			// },
-			// changeColor: (index, color) => {
-			// 	//get the store
-			// 	const store = getStore();
-			// 	//we have to loop the entire demo array to look for the respective index
-			// 	//and change its color
-			// 	const demo = store.demo.map((elm, i) => {
-			// 		if (i === index) elm.background = color;
-			// 		return elm;
-			// 	});
-			// 	//reset the global store
-			// 	setStore({ demo: demo });
+				//console.log(store.jugadores.team_member[0].username);
+				//console.log(store.jugadores.team_member);
+			}
+			// .catch(error => {
+			// 	console.log(error);
+			// });
 		}
+
+		// 	const store = getStore();
+		// 	store.users.map((user => {
+		// 		console.log(user.ID);
+		// 		// if (user.ID == ownerID) {
+		// 		// 	console.log(user.username);
+		// 		// 	return user.username;
+		// 	});
+		// }
+		// Use getActions to call a function within a fuction
+		// exampleFunction: () => {
+		// 	getActions().changeColor(0, "green");
+		// },
+		// loadSomeData: () => {
+		// 	/**
+		// 		fetch().then().then(data => setStore({ "foo": data.bar }))
+		// 	*/
+		// },
+		// changeColor: (index, color) => {
+		// 	//get the store
+		// 	const store = getStore();
+		// 	//we have to loop the entire demo array to look for the respective index
+		// 	//and change its color
+		// 	const demo = store.demo.map((elm, i) => {
+		// 		if (i === index) elm.background = color;
+		// 		return elm;
+		// 	});
+		// 	//reset the global store
+		// 	setStore({ demo: demo });
 	};
 };
 

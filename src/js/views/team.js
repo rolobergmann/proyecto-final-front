@@ -3,23 +3,22 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import Media from "react-bootstrap/Media";
+import Card from "react-bootstrap/Card";
+import Row from "react-bootstrap/Row";
 
 export const Team = props => {
 	const { store, actions } = useContext(Context);
+	const loadValue = 1;
 	const indice = props.match.params.theid - 1;
-<<<<<<< HEAD
-=======
-
->>>>>>> 7eaa95743f317543dcd29fa49b3967704d3c6d80
 	const ownerTeam = store.user.map(item => {
 		if (item.id == store.teams[indice].owner) {
 			return item.username;
 		}
 	});
 
-	{
+	useEffect(() => {
 		actions.getTeamMembers(props.match.params.theid);
-	}
+	}, []);
 
 	return (
 		<div>
@@ -31,13 +30,22 @@ export const Team = props => {
 					</h1>
 					<h2>Team Leader: {ownerTeam}</h2>
 					<h5>Biografia</h5>
-					<p>
-						Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin
-						commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum
-						nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-					</p>
+					<p>{store.teams[indice].bio}</p>
 					<h5>Jugadores</h5>
-					<p>Aqui</p>
+					{/* {store.jugadores.team_member} */}
+					<Row md={5} className="justify-content-md-center">
+						{store.jugadores.map(jugador => (
+							<Card
+								className="justify-content-md-center"
+								variant="center"
+								key={jugador.ID}
+								style={{ width: "18rem" }}>
+								{/* <Card.Img width={250} height={250} src={`/${jugador.image}`} /> */}
+
+								<Card.Body>{jugador.username}</Card.Body>
+							</Card>
+						))}
+					</Row>
 				</Media.Body>
 			</Media>
 
