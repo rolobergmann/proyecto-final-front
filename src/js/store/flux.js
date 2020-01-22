@@ -12,7 +12,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			registro: [],
 			postulacion: [],
-			visible: "Si"
+			ownerTeam: ""
 		},
 
 		actions: {
@@ -28,8 +28,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				fetch("http://localhost:3000/teams", requestOptions)
 					.then(resp => {
-						console.log(resp.ok); // will be true if the response is successfull
-						console.log(resp.status); // the status code = 200 or code = 400 etc.
 						return resp.json(); // (returns promise) will try to parse the result as json as return a promise that you can .then for results
 					})
 					.then(data => {
@@ -45,10 +43,55 @@ const getState = ({ getStore, getActions, setStore }) => {
 						}));
 					})
 					.catch(error => {
-						//error handling
 						console.log(error);
 					});
+			},
+
+			getUsers() {
+				var myHeaders = new Headers();
+				myHeaders.append("Content-Type", "application/json");
+
+				var requestOptions = {
+					method: "GET",
+					headers: myHeaders,
+					redirect: "follow"
+				};
+
+				fetch("http://localhost:3000/user", requestOptions)
+					.then(resp => {
+						return resp.json(); // (returns promise) will try to parse the result as json as return a promise that you can .then for results
+					})
+					.then(data => {
+						setStore({ user: data });
+						data.map(item => ({
+							id: item.id,
+							email: item.email,
+							username: item.username,
+							first_name: item.first_name,
+							last_name: item.last_name,
+							role: item.role,
+							bio: item.bio,
+							image: item.image,
+							blizzardID: item.blizzardID,
+							team_user: item.team_user
+						}));
+					})
+					.catch(error => {
+						console.log(error);
+					});
+
+				// 		if (i === index) elm.background = color;
+				// 		return elm;
 			}
+
+			// 	const store = getStore();
+			// 	store.users.map((user => {
+			// 		console.log(user.ID);
+			// 		// if (user.ID == ownerID) {
+			// 		// 	console.log(user.username);
+			// 		// 	return user.username;
+			// 	});
+			// }
 			// Use getActions to call a function within a fuction
 			// exampleFunction: () => {
 			// 	getActions().changeColor(0, "green");

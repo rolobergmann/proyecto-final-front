@@ -1,13 +1,11 @@
 import React from "react";
 import { Route, Router, Switch, Link } from "react-router-dom";
-import ScrollToTop from "./component/scrollToTop";
 import { PrivateRoute } from "./component/PrivateRoute";
 import { history } from "./component/auth/history";
 import { authenticationService } from "./component/auth/authentication.service";
 import injectContext from "./store/appContext";
 import { Nav } from "react-bootstrap";
 import Logo from "../img/logonar.png";
-
 import { Home } from "./views/home";
 import { Demo } from "./views/demo";
 import { TeamsHome } from "./views/teams_home";
@@ -32,7 +30,8 @@ class Layout extends React.Component {
 
 		this.state = {
 			currentUser: null,
-			isOpen: false
+			isOpen: false,
+			loggedUser: authenticationService.currentUserValue
 		};
 	}
 	toggleCollapse = () => {
@@ -50,6 +49,7 @@ class Layout extends React.Component {
 
 	render() {
 		const { currentUser } = this.state;
+		console.log(currentUser);
 		return (
 			<div className="d-flex flex-column h-100" style={layoutStyle}>
 				<Router history={history}>
@@ -68,7 +68,7 @@ class Layout extends React.Component {
 							</Nav.Item>
 							<Nav.Item as="li">
 								<Link to="/team_create" className="nav-item nav-link">
-									Creador de equipos
+									Crea tu Equipo
 								</Link>
 							</Nav.Item>
 							<Nav.Item as="li">
@@ -76,16 +76,20 @@ class Layout extends React.Component {
 									Tu perfil
 								</Link>
 							</Nav.Item>
-							<Nav.Item as="li">
-								<Link to="/admin" className="nav-item nav-link">
-									Admin
-								</Link>
-							</Nav.Item>
-							<Nav.Item as="li">
-								<Link to="/LoginPage" className="nav-item nav-link">
-									Login
-								</Link>
-							</Nav.Item>
+							{currentUser && (
+								<Nav.Item as="li">
+									<Link to="/admin" className="nav-item nav-link">
+										Admin
+									</Link>
+								</Nav.Item>
+							)}
+							{currentUser == null && (
+								<Nav.Item as="li">
+									<Link to="/LoginPage" className="nav-item nav-link">
+										Login
+									</Link>
+								</Nav.Item>
+							)}
 							{currentUser && (
 								<Nav.Item as="li">
 									<a onClick={this.logout} className="nav-item nav-link">

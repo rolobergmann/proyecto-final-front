@@ -2,9 +2,22 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { Button, Card, Accordion, Form, Row, Col, Spinner } from "react-bootstrap";
+import { authenticationService } from "./auth/authentication.service";
 
 export class Admin extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			currentUser: authenticationService.currentUserValue
+		};
+	}
 	render() {
+		const user = this.state.currentUser.user;
+		console.log(this.state.currentUser);
+		if (user.role !== 1) {
+			return <h1>No tienes permisos de adminstrador</h1>;
+		}
+
 		return (
 			<div className="container">
 				<div className="row">

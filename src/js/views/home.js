@@ -7,11 +7,9 @@ import { Context } from "../store/appContext";
 
 export const Home = () => (
 	<div className=" container text-center mt-1">
-		<Context.Provider>
-			<div>
-				<Carrusel />
-			</div>
-			<HomeInfo />
-		</Context.Provider>
+		<div>
+			<Carrusel />
+		</div>
+		<HomeInfo />
 	</div>
 );
