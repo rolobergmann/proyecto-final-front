@@ -1,4 +1,5 @@
 import React from "react";
+import Alert from "react-bootstrap/Alert";
 import ListGroup from "react-bootstrap/ListGroup";
 import Spinner from "react-bootstrap/Spinner";
 import Media from "react-bootstrap/Media";
@@ -55,6 +56,8 @@ export class ApiQuick extends React.Component {
 		const { error, isLoaded, data } = this.state;
 		if (error) {
 			return <div>Error: {error.message}</div>;
+		} else if (this.state.playerinfo.won === undefined) {
+			return <Alert variant="info">Informacion no disponible por el momento, por favor intente mas tarde</Alert>;
 		} else if (!isLoaded) {
 			return (
 				<Spinner animation="border" role="status">
