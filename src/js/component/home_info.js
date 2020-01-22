@@ -1,4 +1,5 @@
 import React from "react";
+import ATVParallax from "react-atv-parallax";
 import {
 	MDBJumbotron,
 	MDBBtn,
@@ -11,6 +12,7 @@ import {
 	MDBAnimation
 } from "mdbreact";
 import OwlBack from "../../img/owl.jpg";
+import Egamers from "../../img/logonar.png";
 
 const layoutStyle = {
 	backgroundImage: `url(${OwlBack})`,
@@ -18,11 +20,70 @@ const layoutStyle = {
 	backgroundSize: "cover"
 };
 
-export const HomeInfo = () => (
+const rootDivStyle = {
+	// position: "absolute"
+	top: 0,
+	right: 0,
+	bottom: 0,
+	left: 0,
+	display: "flex",
+	justifyContent: "center",
+	alignItems: "center",
+	paddingTop: 30
+	// backgroundColor: "rgba(238, 239, 244, 1)"
+};
+
+export const HomeInfo = props => (
 	<MDBContainer>
 		<MDBRow>
-			<MDBCol>
-				<MDBAnimation type="slideInUp">
+			<MDBCol style={rootDivStyle}>
+				<ATVParallax style={{ width: 992, height: 589 }}>
+					<img src={OwlBack} />
+					<div>
+						<div
+							style={{
+								position: "relative",
+								top: "77%",
+								height: "20%",
+								width: "100%",
+								display: "table",
+								left: "38%"
+							}}>
+							<span
+								style={{
+									fontSize: "3rem",
+									// display: "table-cell",
+									textAlign: "center",
+									verticalAlign: "middle"
+								}}>
+								<img src={Egamers} />
+							</span>
+						</div>
+					</div>
+					{/* <div>
+						<div
+							style={{
+								position: "absolute",
+								// top: "77%",
+								height: "20%",
+								width: "100%",
+								display: "table"
+							}}>
+							<span
+								style={{
+									fontSize: "3rem",
+									display: "table-cell",
+									textAlign: "center",
+									verticalAlign: "middle",
+									color: "white"
+								}}>
+								We are eSports!
+							</span>
+						</div>
+					</div> */}
+				</ATVParallax>
+
+				{/* <MDBAnimation type="slideInUp">
 					<MDBJumbotron fluid style={{ padding: 0 }}>
 						<MDBCol className="text-white text-center py-5 px-4 my-5 bg-image-full" style={layoutStyle}>
 							<MDBCol className="py-5">
@@ -45,7 +106,7 @@ export const HomeInfo = () => (
 							</MDBCol>
 						</MDBCol>
 					</MDBJumbotron>
-				</MDBAnimation>
+				</MDBAnimation> */}
 			</MDBCol>
 		</MDBRow>
 	</MDBContainer>
