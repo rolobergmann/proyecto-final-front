@@ -21,8 +21,8 @@ import { Admin } from "./component/admin";
 import "../styles/navbar.scss";
 
 const layoutStyle = {
-	paddingTop: 100,
-	backgroundImage: `url(${Owback})`
+	// paddingTop: 100
+	// backgroundImage: `url(${Owback})`
 };
 
 //create your first component
@@ -56,7 +56,7 @@ class Layout extends React.Component {
 			<div className="d-flex flex-column h-100" style={layoutStyle}>
 				<Router history={history}>
 					<div className="nav-links">
-						<Nav className="justify-content-between navbar fixed-top" defaultActiveKey="/home" as="ul">
+						<Nav className="justify-content-between navbar" defaultActiveKey="/home" as="ul">
 							<Nav.Item className="navbar-brand">{<img src={Logo} height="70" width="110" />}</Nav.Item>
 							<Nav.Item as="li">
 								<Link to="/" className="nav-item nav-link">

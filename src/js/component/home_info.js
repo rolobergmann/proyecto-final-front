@@ -21,7 +21,7 @@ const layoutStyle = {
 };
 
 const rootDivStyle = {
-	// position: "absolute"
+	position: "relative",
 	top: 0,
 	right: 0,
 	bottom: 0,
@@ -29,7 +29,9 @@ const rootDivStyle = {
 	display: "flex",
 	justifyContent: "center",
 	alignItems: "center",
-	paddingTop: 30
+	width: "100%",
+	paddingTop: 15
+
 	// backgroundColor: "rgba(238, 239, 244, 1)"
 };
 
