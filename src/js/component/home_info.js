@@ -10,6 +10,13 @@ import {
 	MDBMask,
 	MDBAnimation
 } from "mdbreact";
+import OwlBack from "../../img/owl.jpg";
+
+const layoutStyle = {
+	backgroundImage: `url(${OwlBack})`,
+	backgroundPosition: "center",
+	backgroundSize: "cover"
+};
 
 export const HomeInfo = () => (
 	<MDBContainer>
@@ -17,11 +24,7 @@ export const HomeInfo = () => (
 			<MDBCol>
 				<MDBAnimation type="slideInUp">
 					<MDBJumbotron fluid style={{ padding: 0 }}>
-						<MDBCol
-							className="text-white text-center py-5 px-4 my-5"
-							style={{
-								backgroundImage: `url(https://images.clarin.com/2019/10/29/mundial-de-league-of-legends___5xo-1Dg7_1200x0__1.jpg)`
-							}}>
+						<MDBCol className="text-white text-center py-5 px-4 my-5 bg-image-full" style={layoutStyle}>
 							<MDBCol className="py-5">
 								<MDBCardTitle className="h1-responsive pt-3 m-5 font-bold">
 									Create your beautiful website with MDBootstrap

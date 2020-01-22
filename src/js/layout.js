@@ -20,7 +20,8 @@ import { Admin } from "./component/admin";
 import "../styles/navbar.scss";
 
 const layoutStyle = {
-	paddingTop: 100
+	paddingTop: 100,
+	backgroundImage: `url(${Owback})`
 };
 
 //create your first component
