@@ -25,7 +25,10 @@ export class ApiComp extends React.Component {
 	}
 
 	componentDidMount() {
-		fetch("https://ovrstat.com/stats/pc/" + this.state.currentUser.user.blizzardID, requestOptions)
+		fetch(
+			"https://ow-api.com/v1/stats/pc/global/" + this.state.currentUser.user.blizzardID + "/profile",
+			requestOptions
+		)
 			.then(resp => {
 				console.log(resp.ok); // will be true if the response is successfull
 				console.log(resp.status); // the status code = 200 or code = 400 etc.
@@ -38,9 +41,9 @@ export class ApiComp extends React.Component {
 					playerinfo: {
 						icon: data.icon,
 						name: data.name,
-						won: data.competitiveStats.careerStats.allHeroes.game.gamesWon,
-						lost: data.competitiveStats.careerStats.allHeroes.game.gamesLost,
-						time: data.competitiveStats.careerStats.allHeroes.game.timePlayed
+						won: data.competitiveStats.games.played,
+						lost: data.competitiveStats.games.won
+						// time: data.competitiveStats.careerStats.games.timePlayed
 					}
 				});
 				//here is were your code should start after the fetch finishes
@@ -76,14 +79,14 @@ export class ApiComp extends React.Component {
 						<h5>{this.state.playerinfo.name}</h5>
 						<ListGroup variant="flush">
 							<ListGroup.Item>
-								Partidas Ganadas Temporada Actual - {this.state.playerinfo.won}
+								Partidas Ganadas Temporada Actual - {this.state.playerinfo.played}
 							</ListGroup.Item>
 							<ListGroup.Item>
-								Partidas Perdidas Temporada Actual - {this.state.playerinfo.lost}
+								Partidas Perdidas Temporada Actual - {this.state.playerinfo.won}
 							</ListGroup.Item>
-							<ListGroup.Item>
+							{/* <ListGroup.Item>
 								Tiempo Jugado Temporada Actual - {this.state.playerinfo.time}
-							</ListGroup.Item>
+							</ListGroup.Item> */}
 						</ListGroup>
 					</Media.Body>
 				</Media>

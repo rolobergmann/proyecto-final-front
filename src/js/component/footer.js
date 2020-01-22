@@ -42,7 +42,7 @@ export const Footer = () => (
 				</div>
 				<div className="col-lg-4 col-xs-12 location">
 					<h4 className="mt-lg-0 mt-sm-4">Contactenos</h4>
-					<a href="mailto:4egamerschile@gmail.com">4egamerschile@gmail.com</a>
+					<p>4egamerschile@gmail.com</p>
 					{/* <p className="mb-0">
 						<i className="fa fa-phone mr-3" />
 						(541) 754-3010
