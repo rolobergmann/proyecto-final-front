@@ -93,7 +93,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					headers: myHeaders
 				};
 
-				fetch("http://localhost:3000/team/" + team + "/list/", requestOptions)
+				fetch("http://localhost:3000/team/"+team+"/list/", requestOptions)
 					.then(resp => {
 						return resp.json(); // (returns promise) will try to parse the result as json as return a promise that you can .then for results
 					})

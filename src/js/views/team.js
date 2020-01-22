@@ -7,6 +7,10 @@ import Media from "react-bootstrap/Media";
 export const Team = props => {
 	const { store, actions } = useContext(Context);
 	const indice = props.match.params.theid - 1;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7eaa95743f317543dcd29fa49b3967704d3c6d80
 	const ownerTeam = store.user.map(item => {
 		if (item.id == store.teams[indice].owner) {
 			return item.username;
