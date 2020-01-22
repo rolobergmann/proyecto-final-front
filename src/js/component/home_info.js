@@ -1,4 +1,5 @@
 import React from "react";
+import ATVParallax from "react-atv-parallax";
 import {
 	MDBJumbotron,
 	MDBBtn,
@@ -10,18 +11,83 @@ import {
 	MDBMask,
 	MDBAnimation
 } from "mdbreact";
+import OwlBack from "../../img/owl.jpg";
+import Egamers from "../../img/logonar.png";
 
-export const HomeInfo = () => (
+const layoutStyle = {
+	backgroundImage: `url(${OwlBack})`,
+	backgroundPosition: "center",
+	backgroundSize: "cover"
+};
+
+const rootDivStyle = {
+	position: "relative",
+	top: 0,
+	right: 0,
+	bottom: 0,
+	left: 0,
+	display: "flex",
+	justifyContent: "center",
+	alignItems: "center",
+	width: "100%",
+	paddingTop: 15
+
+	// backgroundColor: "rgba(238, 239, 244, 1)"
+};
+
+export const HomeInfo = props => (
 	<MDBContainer>
 		<MDBRow>
-			<MDBCol>
-				<MDBAnimation type="slideInUp">
-					<MDBJumbotron fluid style={{ padding: 0 }}>
-						<MDBCol
-							className="text-white text-center py-5 px-4 my-5"
+			<MDBCol style={rootDivStyle}>
+				<ATVParallax style={{ width: 992, height: 589 }}>
+					<img src={OwlBack} />
+					<div>
+						<div
 							style={{
-								backgroundImage: `url(https://images.clarin.com/2019/10/29/mundial-de-league-of-legends___5xo-1Dg7_1200x0__1.jpg)`
+								position: "relative",
+								top: "77%",
+								height: "20%",
+								width: "100%",
+								display: "table",
+								left: "38%"
 							}}>
+							<span
+								style={{
+									fontSize: "3rem",
+									// display: "table-cell",
+									textAlign: "center",
+									verticalAlign: "middle"
+								}}>
+								<img src={Egamers} />
+							</span>
+						</div>
+					</div>
+					{/* <div>
+						<div
+							style={{
+								position: "absolute",
+								// top: "77%",
+								height: "20%",
+								width: "100%",
+								display: "table"
+							}}>
+							<span
+								style={{
+									fontSize: "3rem",
+									display: "table-cell",
+									textAlign: "center",
+									verticalAlign: "middle",
+									color: "white"
+								}}>
+								We are eSports!
+							</span>
+						</div>
+					</div> */}
+				</ATVParallax>
+
+				{/* <MDBAnimation type="slideInUp">
+					<MDBJumbotron fluid style={{ padding: 0 }}>
+						<MDBCol className="text-white text-center py-5 px-4 my-5 bg-image-full" style={layoutStyle}>
 							<MDBCol className="py-5">
 								<MDBCardTitle className="h1-responsive pt-3 m-5 font-bold">
 									Create your beautiful website with MDBootstrap
@@ -42,7 +108,7 @@ export const HomeInfo = () => (
 							</MDBCol>
 						</MDBCol>
 					</MDBJumbotron>
-				</MDBAnimation>
+				</MDBAnimation> */}
 			</MDBCol>
 		</MDBRow>
 	</MDBContainer>

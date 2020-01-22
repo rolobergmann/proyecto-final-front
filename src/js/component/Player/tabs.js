@@ -65,7 +65,7 @@ export class Tabs extends Component {
 									Partidas Rapidas
 								</Nav.Link>
 							</Nav.Item>
-							<Nav.Item>
+							{/* <Nav.Item>
 								<Nav.Link
 									to="#"
 									active={this.state.items["default"] === "4"}
@@ -80,7 +80,7 @@ export class Tabs extends Component {
 									onClick={this.togglePills("default", "5")}>
 									Crear Postulacion
 								</Nav.Link>
-							</Nav.Item>
+							</Nav.Item> */}
 						</Nav>
 						<MDBTabContent activeItem={this.state.items["default"]}>
 							<MDBTabPane tabId="1">

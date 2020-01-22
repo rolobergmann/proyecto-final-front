@@ -1,13 +1,11 @@
 import React from "react";
 import { Route, Router, Switch, Link } from "react-router-dom";
-import ScrollToTop from "./component/scrollToTop";
 import { PrivateRoute } from "./component/PrivateRoute";
 import { history } from "./component/auth/history";
 import { authenticationService } from "./component/auth/authentication.service";
 import injectContext from "./store/appContext";
 import { Nav } from "react-bootstrap";
 import Logo from "../img/logonar.png";
-
 import { Home } from "./views/home";
 import { Demo } from "./views/demo";
 import { TeamsHome } from "./views/teams_home";
@@ -16,13 +14,15 @@ import { Team } from "./views/team";
 import { Players } from "./views/players";
 import { LoginPage } from "./component/login";
 import { Register } from "./component/Registro/registro";
+import Owback from "../img/Owback.jpeg";
 
 import { Footer } from "./component/footer";
 import { Admin } from "./component/admin";
 import "../styles/navbar.scss";
 
 const layoutStyle = {
-	paddingTop: 100
+	// paddingTop: 100
+	// backgroundImage: `url(${Owback})`
 };
 
 //create your first component
@@ -56,7 +56,7 @@ class Layout extends React.Component {
 			<div className="d-flex flex-column h-100" style={layoutStyle}>
 				<Router history={history}>
 					<div className="nav-links">
-						<Nav className="justify-content-between navbar fixed-top" defaultActiveKey="/home" as="ul">
+						<Nav className="justify-content-between navbar" defaultActiveKey="/home" as="ul">
 							<Nav.Item className="navbar-brand">{<img src={Logo} height="70" width="110" />}</Nav.Item>
 							<Nav.Item as="li">
 								<Link to="/" className="nav-item nav-link">
@@ -70,7 +70,7 @@ class Layout extends React.Component {
 							</Nav.Item>
 							<Nav.Item as="li">
 								<Link to="/team_create" className="nav-item nav-link">
-									Creador de equipos
+									Crea tu Equipo
 								</Link>
 							</Nav.Item>
 							<Nav.Item as="li">
