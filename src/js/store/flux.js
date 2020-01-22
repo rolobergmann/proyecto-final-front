@@ -10,9 +10,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					logo: ""
 				}
 			],
+			jugadores: {},
 			registro: [],
-			postulacion: [],
-			ownerTeam: ""
+			postulacion: []
 		},
 
 		actions: {
@@ -82,6 +82,38 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				// 		if (i === index) elm.background = color;
 				// 		return elm;
+			},
+
+			getTeamMembers(team) {
+				var myHeaders = new Headers();
+				myHeaders.append("Content-Type", "application/json");
+
+				var requestOptions = {
+					method: "GET",
+					headers: myHeaders
+				};
+
+				fetch("http://localhost:3000/team/list/" + team, requestOptions)
+					.then(resp => {
+						return resp.json(); // (returns promise) will try to parse the result as json as return a promise that you can .then for results
+					})
+					.then(data => {
+						console.log(data.team_member);
+						console.log(data.team_member.length);
+						setStore({ jugadores: data.team_member });
+						// setStore({ team_members: data });
+						// data.team_member.map(item => ({
+						// 	bio: item.bio
+						// 	// first_name: item.first_name,
+						// 	// last_name: item.last_name,
+						// 	// username: item.username,
+						// 	// blizzardID: item.blizzardID,
+						// 	// role: item.role,
+						// 	// image: item.image            // }));
+					});
+				// .catch(error => {
+				// 	console.log(error);
+				// });
 			}
 
 			// 	const store = getStore();

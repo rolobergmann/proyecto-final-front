@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, getActions } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import Media from "react-bootstrap/Media";
 
 export const Team = props => {
-	const { store } = useContext(Context);
+	const { store, actions } = useContext(Context);
 	const indice = props.match.params.theid - 1;
 
 	const ownerTeam = store.user.map(item => {
@@ -13,6 +13,10 @@ export const Team = props => {
 			return item.username;
 		}
 	});
+
+	{
+		actions.getTeamMembers(props.match.params.theid);
+	}
 
 	return (
 		<div>
